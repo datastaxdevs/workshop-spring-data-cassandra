@@ -1,5 +1,5 @@
 
-# MAIN - Hands-On Spring Data Cassandra
+# Hands-On Spring Data Cassandra
 
 ![SplashScreen](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/splash.jpeg?raw=true)
 
@@ -20,16 +20,17 @@ Target url looks like  `https://<your_uid>.<your_region>.gitpod.io/#/workspace/w
 
 **👁️ Expected output**
 
-![TodoBackendClient](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/gitpod-home.png?raw=true)
+*The screenshot may be slightly different based on your default skin and a few edits in the read me.*
 
+![TodoBackendClient](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/gitpod-home.png?raw=true)
 
 **That's it.** Gitpod provides all tools we will need today including `Maven` and exporting port `8080`. At initialization of the workspace we schedule a `mvn clean install` to download dependencies. You can still download the repository and bookmark it as all materials including slides are included.
 
 ```
-💻 There is nothing preventing it for running the project on your laptop you need `Maven` and an `IDE` like Spring STS but you are on yout own.
+💻 There is nothing preventing you it for running the project on your laptop you need `Maven` and an `IDE` like Spring STS but you are on yout own.
 ```
 
 Let's get starting:
 ```bash
-git checkout -b PART1
+git checkout PART1
 ```
