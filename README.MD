@@ -1,7 +1,7 @@
 
 # Hands-On Spring Data Cassandra
 
-![SplashScreen](./images/splash.jpeg?raw=true)
+![SplashScreen](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/splash.jpeg?raw=true)
 
 [![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/DataStax-Academy/workshop-spring-data-cassandra) 
 [![License Apache2](https://img.shields.io/hexpm/l/plug.svg)](http://www.apache.org/licenses/LICENSE-2.0)
@@ -24,14 +24,14 @@ For simplicity all exercise instructions are listed in a single `README.MD` docu
 
 **TodoMVC** is a fabulous community contribution that helps developers compare frameworks on the basis of actual project code, not just claims and anecdotes. TodoMVC is an immensely valuable attempt at a difficult problem - providing a structured way of comparing JS libraries and frameworks.
 
-![TodoMVC](https://github.com/DataStax-Academy/microservices-java-workshop-online/blob/master/z-materials/images/todomvc.png?raw=true)
+![TodoMVC](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/todomvc.png?raw=true)
 
 **✅ Step 1a. Visit [TodoMVC.com](http://todomvc.com/) to discover what we are building today** : We want you to see what it look like before starting anything. So simply access the URL [http://todomvc.com/](http://todomvc.com/) and browse. You will see that there are multiple implementations, pick one of those and test it live in your browser.
 
 
 **Todo-Backend** is a shared example to showcase backend tech stacks. The Todo-Backend project defines a simple web API spec - for managing a todo list. Contributors implement that spec using various tech stacks. Those implementations are cataloged below. A spec runner verifies that each contribution implements the exact same API, by running an automated test suite which defines the API.
 
-![TodoBackend](./images/todobackend.png?raw=true)
+![TodoBackend](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/todobackend.png?raw=true)
 
 There are multiple free implementations available. Some implementations provide endpoints to be tested in `heroku`. [Heroku provide free hosting for a Java application but this is on-demand](https://devcenter.heroku.com/articles/deploying-spring-boot-apps-to-heroku). With `Heroku` The application will be sleeping until you access the endpoint. So it will take 30s for the first person to have the application running. Among the available free endpoints we can list:
 - `Endpoint#1` : [https://todo-back-springboot220-java12.herokuapp.com/todos](https://todo-back-springboot220-java12.herokuapp.com/todos)
@@ -40,7 +40,7 @@ There are multiple free implementations available. Some implementations provide 
 
 **✅ Step 2b. Test TodoBackEnd Spec Runner** : Locate the [spec runner](https://www.todobackend.com/specs/index.html) and use one of the `endpoints` listed above to evaluate if API matchs the requirements. To do so copy-paste one URL and click `Run Tests`.
 
-![TodoBackendTest](./images/todobackend-runtest.png?raw=true)
+![TodoBackendTest](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/todobackend-runtest.png?raw=true)
 
 - `SpecRunner#1` : [https://www.todobackend.com/specs/index.html?https://todo-back-springboot220-java12.herokuapp.com/todos](https://www.todobackend.com/specs/index.html?https://todo-back-springboot220-java12.herokuapp.com/todos)
 - `SpecRunner#2` : [https://www.todobackend.com/specs/index.html?https://todo-quarkus.herokuapp.com/todos](https://www.todobackend.com/specs/index.html?https://todo-quarkus.herokuapp.com/todos)
@@ -48,7 +48,7 @@ There are multiple free implementations available. Some implementations provide 
 
 **👁️ Expected output**
 
-![TodoBackendOuput](./images/todobackend-output-host.png?raw=true)
+![TodoBackendOuput](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/todobackend-output-host.png?raw=true)
 
 **Note:** *During the live stream we will be dozens of people testing the same endpoints - maybe - we could hit some slowness or issues with race conditions.*
 
@@ -63,7 +63,7 @@ There are multiple free implementations available. Some implementations provide 
 
 **👁️ Expected output**
 
-![TodoBackendClient](./images/todobackend-output-client.png?raw=true)
+![TodoBackendClient](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/todobackend-output-client.png?raw=true)
 
 Our mission withing the next hour is to implement the *backend API* and store  data into Apache Cassandra™. We have you covered by providing the skeleton of the application.
 
@@ -78,7 +78,7 @@ Let's fill what we need for today as the picture.
 But we are lazy and click [THIS LINK](https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.4.1.RELEASE&packaging=jar&jvmVersion=11&groupId=com.datastax.workshop&artifactId=todobackend-springdata&name=todobackend-springdata&description=TodoBackend%20Spring%20Boot%20Microservices%20with%20Spring%20Data%20for%20Apache%20Cassandra&packageName=com.datastax.workshop&dependencies=data-cassandra,devtools,web,lombok,actuator)
  to have everything populated already.
 
-![TodoBackendClient](./images/spring-initializr.png?raw=true)
+![TodoBackendClient](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/spring-initializr.png?raw=true)
 
 Now simply click button **GENERATE** to download the ZIP if you want.
 
@@ -86,7 +86,7 @@ Guess what ? this is the initial content of this repository (MASTER) so you have
 
 ## 3. Start your Spring-Boot Application 
 
-**✅ Open gitpod** : [Gitpod](https://www.gitpod.io/) is an IDE 100% online based on Eclipse Theia. To initialize your environment simply click on the button below *(CTRL + Click to open in new tab)*
+**✅ 3a. Open gitpod** : [Gitpod](https://www.gitpod.io/) is an IDE 100% online based on Eclipse Theia. To initialize your environment simply click on the button below *(CTRL + Click to open in new tab)* You will be asked for you github account.
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/DataStax-Academy/workshop-spring-data-cassandra)
 
@@ -98,16 +98,36 @@ Target url looks like  `https://<your_uid>.<your_region>.gitpod.io/#/workspace/w
 
 **👁️ Expected output**
 
-![SplashScreen](https://github.com/DataStax-Academy/microservices-java-workshop-online/blob/master/z-materials/images/gitpod-home.png?raw=true)
+
+![TodoBackendClient](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/gitpod-home.png?raw=true)
+
 
 **That's it.** Gitpod provides all tools we will need today including `Maven` and exporting port `8080`. At initialization of the workspace we schedule a `mvn clean install` to download dependencies. You can still download the repository and bookmark it as all materials including slides are included.
 
 💻 There is nothing preventing it for running the project on your laptop you need `Maven` and an `IDE` like Spring STS but you are on yout own.
 
+**✅ Step 3b. Start Your application** : By using a maven command or run application in your IDE
+
+```bash
+cd todobackend-springdata/
+
+mvn clean install spring-boot:run
+```
+
+```diff
+- You will get an ERROR 
+- THIS IS EXPECTED
+```
+
+Adding some dependency for Spring Data Cassandra now create beans to connect to Cassandra but as of now we don;t have any backend. It will come soon but for now let's add a couple of lines
+
+Remove autoconfigurations with proper exclude clauses in annotation `SpringBootApplication` in class `TodobackendSpringdataApplication`.
+
 ```java
-// Disable 
 @SpringBootApplication(exclude = { CassandraDataAutoConfiguration.class, CassandraAutoConfiguration.class })
 ```
+
+You can also create a new file to have a small hello world sample to see all :
 
 ```java
 package com.datastax.workshop;
@@ -117,6 +137,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HelloWorld {
+
     @RequestMapping("/")
     public String hello() {
         return "Hello World !";
@@ -124,3 +145,16 @@ public class HelloWorld {
 }
 ```
 
+You should be able to start the application now.
+
+```bash
+mvn clean install spring-boot:run
+```
+
+This is it for part 1. To move to part 2 checkout branch `STEP2`
+
+```bash
+git checkout -b STEP2
+```
+
+![TodoBackendClient](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/welldone.jpg?raw=true)
