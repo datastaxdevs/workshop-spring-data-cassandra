@@ -4,23 +4,17 @@
 [![License Apache2](https://img.shields.io/hexpm/l/plug.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 [![Discord](https://img.shields.io/discord/685554030159593522)](https://discord.com/widget?id=685554030159593522&theme=dark)
 
-![SplashScreen](./images/splash.png?raw=true)
+![SplashScreen](./images/splash.jpeg?raw=true)
 
 Today we are creating the Todo Application with storage in Apache Cassandra™.
 
-# Table of Content
+**Table of Content**
+- **[1. Run Existing TodoApplication](#)**
+- **[2. Create your Spring-Boot Application](#)**
+- **[3. Start your Spring-Boot Application](#)**
+- **[4. Implement the API](#)**
 
-**[Part I - Create Todo Application](#1-run-the-todo-application)**
-
-- **[1.1 Run Existing TodoApplication](#)**
-- **[1.2 Create your Spring-Boot Application](#)**
-- **[1.3 Start your Spring-Boot Application](#)**
-
-
-![Home](./images/home.png?raw=true)
-
-
-# Create Todo Application
+---
 
 For simplicity all exercise instructions are listed in a single `README.MD` document. As it is quite long we provide a table of contents after each chapter so you can go back to it.
 
@@ -106,17 +100,7 @@ Target url looks like  `https://<your_uid>.<your_region>.gitpod.io/#/workspace/w
 
 **That's it.** Gitpod provides all tools we will need today including `Maven` and exporting port `8080`. At initialization of the workspace we schedule a `mvn clean install` to download dependencies. You can still download the repository and bookmark it as all materials including slides are included.
 
-- ### Option B - Work with Local Environment 💻
-
-
-
-Start
-
-Errir 
-
-Import
-
-Start = Error
+💻 There is nothing preventing it for running the project on your laptop you need `Maven` and an `IDE` like Spring STS but you are on yout own.
 
 ```java
 // Disable 
