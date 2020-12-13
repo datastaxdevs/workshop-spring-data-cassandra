@@ -133,30 +133,47 @@ Remove autoconfigurations with proper exclude clauses in annotation `SpringBootA
 ```
 
 You can also create a new file to have a small hello world sample to see all :
-
-```java
-package com.datastax.workshop;
-
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-@RestController
-public class HelloWorld {
-
-    @RequestMapping("/")
-    public String hello() {
-        return "Hello World !";
-    }
-}
-```
-
 You should be able to start the application now.
 
 ```bash
 mvn clean install spring-boot:run
 ```
 
+**👁️ Expected output**
+
+```bash
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.4.1)
+
+2020-12-13 17:32:10.471  INFO 6029 --- [  restartedMain] c.d.w.TodobackendSpringdataApplication   : Starting TodobackendSpringdataApplication using Java 11.0.9 on ws-543d6783-68dd-4bcc-b2da-cd1466bb71b4 with PID 6029 (/workspace/workshop-spring-data-cassandra/todobackend-springdata/target/classes started by gitpod in /workspace/workshop-spring-data-cassandra/todobackend-springdata)
+2020-12-13 17:32:10.473  INFO 6029 --- [  restartedMain] c.d.w.TodobackendSpringdataApplication   : No active profile set, falling back to default profiles: default
+2020-12-13 17:32:10.515  INFO 6029 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-12-13 17:32:10.515  INFO 6029 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-12-13 17:32:11.112  INFO 6029 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Reactive Cassandra repositories in DEFAULT mode.
+2020-12-13 17:32:11.120  INFO 6029 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 0 Reactive Cassandra repository interfaces.
+2020-12-13 17:32:11.123  INFO 6029 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Cassandra repositories in DEFAULT mode.
+2020-12-13 17:32:11.124  INFO 6029 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 0 ms. Found 0 Cassandra repository interfaces.
+2020-12-13 17:32:11.471  INFO 6029 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-12-13 17:32:11.480  INFO 6029 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-12-13 17:32:11.480  INFO 6029 --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.41]
+2020-12-13 17:32:11.536  INFO 6029 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-12-13 17:32:11.536  INFO 6029 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1020 ms
+2020-12-13 17:32:11.795  INFO 6029 --- [  restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-12-13 17:32:11.970  INFO 6029 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-12-13 17:32:11.975  INFO 6029 --- [  restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-12-13 17:32:12.006  INFO 6029 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-12-13 17:32:12.020  INFO 6029 --- [  restartedMain] c.d.w.TodobackendSpringdataApplication   : Started TodobackendSpringdataApplication in 1.862 seconds (JVM running for 2.264)
+```
+
 This is it for part 1. To move to part 2 checkout branch `STEP2`
+
+
+
 
 ```bash
 git checkout -b STEP2
