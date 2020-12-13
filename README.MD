@@ -1,5 +1,5 @@
 
-# Hands-On Spring Data Cassandra
+# PART1 - Hands-On Spring Data Cassandra
 
 ![SplashScreen](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/splash.jpeg?raw=true)
 
@@ -11,10 +11,9 @@
 Today we are creating the Todo Application with storage in Apache Cassandra™.
 
 **Table of Content**
-- **[1. Run Existing TodoApplication](#)**
-- **[2. Create your Spring-Boot Application](#)**
-- **[3. Start your Spring-Boot Application](#)**
-- **[4. Implement the API](#)**
+- **[1. Run Existing TodoApplication](#1-run-existing-todoapplication)**
+- **[2. Create your Spring-Boot Application](#2-create-your-spring-boot-application)**
+- **[3. Start your Spring-Boot Application](#3-start-your-spring-boot-application)**
 
 ---
 
@@ -34,17 +33,17 @@ For simplicity all exercise instructions are listed in a single `README.MD` docu
 ![TodoBackend](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/todobackend.png?raw=true)
 
 There are multiple free implementations available. Some implementations provide endpoints to be tested in `heroku`. [Heroku provide free hosting for a Java application but this is on-demand](https://devcenter.heroku.com/articles/deploying-spring-boot-apps-to-heroku). With `Heroku` The application will be sleeping until you access the endpoint. So it will take 30s for the first person to have the application running. Among the available free endpoints we can list:
-- `Endpoint#1` : [https://todo-back-springboot220-java12.herokuapp.com/todos](https://todo-back-springboot220-java12.herokuapp.com/todos)
-- `Endpoint#2` : [https://todo-quarkus.herokuapp.com/todos](https://todo-quarkus.herokuapp.com/todos)
-- `Endpoint#3` : [https://todo-backend-micronaut.herokuapp.com/todos](https://todo-backend-micronaut.herokuapp.com/todos)
+- `#1` : [https://todo-back-springboot220-java12.herokuapp.com/todos](https://todo-back-springboot220-java12.herokuapp.com/todos)
+- `#2` : [https://todo-quarkus.herokuapp.com/todos](https://todo-quarkus.herokuapp.com/todos)
+- `#3` : [https://todo-backend-micronaut.herokuapp.com/todos](https://todo-backend-micronaut.herokuapp.com/todos)
 
 **✅ Step 2b. Test TodoBackEnd Spec Runner** : Locate the [spec runner](https://www.todobackend.com/specs/index.html) and use one of the `endpoints` listed above to evaluate if API matchs the requirements. To do so copy-paste one URL and click `Run Tests`.
 
 ![TodoBackendTest](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/todobackend-runtest.png?raw=true)
 
-- `SpecRunner#1` : [https://www.todobackend.com/specs/index.html?https://todo-back-springboot220-java12.herokuapp.com/todos](https://www.todobackend.com/specs/index.html?https://todo-back-springboot220-java12.herokuapp.com/todos)
-- `SpecRunner#2` : [https://www.todobackend.com/specs/index.html?https://todo-quarkus.herokuapp.com/todos](https://www.todobackend.com/specs/index.html?https://todo-quarkus.herokuapp.com/todos)
-- `SpecRunner#3` : [https://www.todobackend.com/specs/index.html?https://todo-backend-micronaut.herokuapp.com/todos](https://www.todobackend.com/specs/index.html?https://todo-backend-micronaut.herokuapp.com/todos)
+- Link to [`SpecRunner#1`](https://www.todobackend.com/specs/index.html?https://todo-back-springboot220-java12.herokuapp.com/todos)
+- Link to [`SpecRunner#2`](https://www.todobackend.com/specs/index.html?https://todo-quarkus.herokuapp.com/todos)
+- Link to [`SpecRunner#3`](https://www.todobackend.com/specs/index.html?https://todo-backend-micronaut.herokuapp.com/todos)
 
 **👁️ Expected output**
 
@@ -54,12 +53,11 @@ There are multiple free implementations available. Some implementations provide 
 
 **✅ Step 2c. Test TodoBackEnd Web Client** : todoBackend.com provides a [client](https://www.todobackend.com/client/index.html) to work with the API. As before pick one of the `endpoints` listed before and try the client.
 
-![TodoBackendClient]./images/todobackend-runclient.png?raw=true)
+![TodoBackendClient](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/todobackend-runclient.png?raw=true)
 
-
-- `WebClient#1` : [https://www.todobackend.com/client/index.html?https://todo-back-springboot220-java12.herokuapp.com/todos](https://www.todobackend.com/client/index.html?https://todo-back-springboot220-java12.herokuapp.com/todos)
-- `WebClient#2` : [https://www.todobackend.com/client/index.html?https://todo-quarkus.herokuapp.com/todos](https://www.todobackend.com/client/index.html?https://todo-quarkus.herokuapp.com/todos)
-- `WebClient#3` : [https://www.todobackend.com/client/index.html?https://todo-backend-micronaut.herokuapp.com/todos](https://www.todobackend.com/client/index.html?https://todo-backend-micronaut.herokuapp.com/todos)
+- Link to [`WebClient#1`](https://www.todobackend.com/client/index.html?https://todo-back-springboot220-java12.herokuapp.com/todos)
+- Link to [`WebClient#2`](https://www.todobackend.com/client/index.html?https://todo-quarkus.herokuapp.com/todos)
+- Link to [`WebClient#3`](https://www.todobackend.com/client/index.html?https://todo-backend-micronaut.herokuapp.com/todos)
 
 **👁️ Expected output**
 
@@ -172,11 +170,8 @@ mvn clean install spring-boot:run
 
 This is it for part 1. To move to part 2 checkout branch `STEP2`
 
-
-
-
 ```bash
-git checkout -b STEP2
+git checkout -b PART2
 ```
 
 ![TodoBackendClient](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/welldone.jpg?raw=true)

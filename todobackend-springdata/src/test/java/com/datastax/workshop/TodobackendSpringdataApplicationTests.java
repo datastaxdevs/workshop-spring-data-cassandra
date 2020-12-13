@@ -8,6 +8,7 @@ class TodobackendSpringdataApplicationTests {
 
 	@Test
 	void contextLoads() {
+	    System.out.println("Cannot start");
 	}
 
 }
