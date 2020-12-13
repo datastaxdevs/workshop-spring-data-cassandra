@@ -84,27 +84,7 @@ Guess what ? this is the initial content of this repository (MASTER) so you have
 
 ## 3. Start your Spring-Boot Application 
 
-**✅ 3a. Open gitpod** : [Gitpod](https://www.gitpod.io/) is an IDE 100% online based on Eclipse Theia. To initialize your environment simply click on the button below *(CTRL + Click to open in new tab)* You will be asked for you github account.
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/DataStax-Academy/workshop-spring-data-cassandra)
-
-Target url looks like  `https://<your_uid>.<your_region>.gitpod.io/#/workspace/workshop-spring-data-cassandra`. These URL's are dynamic and we cannot provide clickable links in advance. You will need to copy-paste `<your_uid>.<your_region>` as we will insert them in each URL during the exercises.
-
-```
-⚠️ By default Autosaved is not enabled in Gitpod. Don't forget to save your modifications with CTRL+S
-```
-
-**👁️ Expected output**
-
-
-![TodoBackendClient](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/gitpod-home.png?raw=true)
-
-
-**That's it.** Gitpod provides all tools we will need today including `Maven` and exporting port `8080`. At initialization of the workspace we schedule a `mvn clean install` to download dependencies. You can still download the repository and bookmark it as all materials including slides are included.
-
-💻 There is nothing preventing it for running the project on your laptop you need `Maven` and an `IDE` like Spring STS but you are on yout own.
-
-**✅ Step 3b. Start Your application** : By using a maven command or run application in your IDE
+**✅ Step 3b. Start Your application** : Use this  maven command or run application in your IDE
 
 ```bash
 cd todobackend-springdata/
@@ -117,9 +97,9 @@ mvn clean install spring-boot:run
 Caused by: com.datastax.oss.driver.api.core.AllNodesFailedException: Could not reach any contact point, make sure you've provided valid addresses (showing first 1 nodes, use getAllErrors() for more): Node(endPoint=/127.0.0.1:9042, hostId=null, hashCode=17e0c2f0): [com.datastax.oss.driver.api.core.connection.ConnectionInitException: [s0|control|connecting...] Protocol initialization request, step 1 (OPTIONS): failed to send request (io.netty.channel.StacklessClosedChannelException)]
 ```
 
+For those who read:
 ```diff
-- You will get an ERROR 
-- THIS IS EXPECTED
+- You will get an ERROR, THIS IS EXPECTED
 ```
 
 Adding some dependency for Spring Data Cassandra now create beans to connect to Cassandra but as of now we don;t have any backend. It will come soon but for now let's add a couple of lines
