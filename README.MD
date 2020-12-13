@@ -114,6 +114,11 @@ cd todobackend-springdata/
 mvn clean install spring-boot:run
 ```
 
+**👁️ Expected output**
+```
+Caused by: com.datastax.oss.driver.api.core.AllNodesFailedException: Could not reach any contact point, make sure you've provided valid addresses (showing first 1 nodes, use getAllErrors() for more): Node(endPoint=/127.0.0.1:9042, hostId=null, hashCode=17e0c2f0): [com.datastax.oss.driver.api.core.connection.ConnectionInitException: [s0|control|connecting...] Protocol initialization request, step 1 (OPTIONS): failed to send request (io.netty.channel.StacklessClosedChannelException)]
+```
+
 ```diff
 - You will get an ERROR 
 - THIS IS EXPECTED
