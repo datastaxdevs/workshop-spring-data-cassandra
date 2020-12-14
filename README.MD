@@ -1,9 +1,9 @@
 # PART3
 
 **Table of Content**
-- **[1. Create your Astra Instance](#1-create-a-crud-controller)**
-- **[2. Connectivity to Cassandra](#2-test-your-controller)**
-- **[ 3. Connect the application to ASTRA](#3-sample-curl-commands)**
+- **[1. Create your Astra Instance](#1-create-your-astra-instance)**
+- **[2. Connectivity to Cassandra](#2-connectivity-to-cassandra)**
+- **[3. Connect the application to ASTRA](#3-connect-the-application-to-astra)**
 
 ---
 
@@ -55,11 +55,11 @@ With our `Cassandra-as-a-service` instance ready let's connect from our applicat
 
 **✅ Step 2a. Get the secure connect bundle** : Go to Astra home page and locate the connect button. as displayed on the picture below.
 
-![TodoBackend](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/astra-connect.png?raw=true) 
+![TodoBackend](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/PART3/images/astra-connect.png?raw=true) 
 
 Once on **Connect** screen pick `Java` on the left part and locate the `Secure Connect Bundle` link. Copy the link with a right click
 
-![TodoBackend](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/astra-securebundle.png?raw=true)
+![TodoBackend](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/PART3/images/astra-securebundle.png?raw=true)
 
 In gitpod, make sure to be on folder `spring-data-cassandra` and execute the following substituting the link. Becareful about the double quote they are mandator
 
@@ -113,7 +113,7 @@ mvn test -Dtest=com.datastax.workshop.Ex2_CreateSchemaInAstraTest#should_create_
 
 You can now go to the CQLConsole in ASTRA and describe the keyspace, our new table should be there
 
-```
+```sql
 token@cqlsh> describe keyspace todokeyspace;
 
 CREATE KEYSPACE todokeyspace WITH replication = {'class': 'NetworkTopologyStrategy', 'dc-1': '1'}  AND durable_writes = true;
