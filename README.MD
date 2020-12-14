@@ -1,9 +1,10 @@
 # PART4
 
 **Table of Content**
-- **[1. Create a Spring Data Repository](#1-create-your-astra-instance)**
-- **[2. Connectivity to Cassandra](#2-connectivity-to-cassandra)**
-- **[3. Connect the application to ASTRA](#3-connect-the-application-to-astra)**
+- **[1. Object Mapping](#1-object-mapping)**
+- **[2. Create a Spring Data Repository](#2-create-a-spring-data-repository)**
+- **[3. Unit Test of the repository](#3-unit-test-of-the-repository)**
+- **[4. Plug Repository to the RestController](#4-plug-repository-to-the-restcontroller)**
 
 ---
 
@@ -121,7 +122,7 @@ select * from todokeyspace.todos
 ```
 
 
-## 4. Plugin Repository to the RestController
+## 4. Plug Repository to the RestController
 
 Adapt Rest Controller to have the specs passing with the Cassandra Repository. Here are some snippet
 
@@ -151,7 +152,7 @@ public ResponseEntity<Todo> findById(
 
 --- 
 
-To have the the working sample move to STEP5
+To have the working application move to STEP5
 
 ```bash
 git checkout PART5
