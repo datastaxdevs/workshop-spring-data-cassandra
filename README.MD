@@ -141,5 +141,5 @@ curl -X POST http://<your_endpoint>/api/v1/todos/ \
 Let's implements a real backend now
 
 ```bash
-git checkout -b PART3
+git checkout PART3
 ```
