@@ -196,5 +196,5 @@ mvn spring-boot:run
 Let's implements the repository in part4
 
 ```bash
-git checkout -b PART4
+git checkout PART4
 ```
