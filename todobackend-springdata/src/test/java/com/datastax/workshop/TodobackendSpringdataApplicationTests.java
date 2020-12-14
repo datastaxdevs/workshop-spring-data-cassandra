@@ -7,10 +7,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class TodobackendSpringdataApplicationTests {
 
-	@Test
-	void contextLoads() {
-	    // Spring context should have been loading at that time
-	    Assertions.assertTrue(true);
-	}
+    @Test
+    void contextLoads() {
+        // Spring context should have been loading at that time
+        Assertions.assertTrue(true);
+    }
 
 }
