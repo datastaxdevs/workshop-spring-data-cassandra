@@ -88,7 +88,7 @@ public class HelloWorldController {
 
 --- 
 
-To have the final product simply move to FULL branch
+To have the final product simply move to branch `ZEND`
 
 ```bash
 git checkout ZEND
