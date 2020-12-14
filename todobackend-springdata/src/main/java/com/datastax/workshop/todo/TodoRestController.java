@@ -9,9 +9,8 @@ import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Stream;
 
 import javax.servlet.http.HttpServletRequest;
@@ -38,59 +37,81 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/todos/")
 public class TodoRestController {
     
-    private Map<UUID, Todo> todoStore = new ConcurrentHashMap<>();
+    private TodoRepositoryCassandra repo;
+    
+    public TodoRestController(TodoRepositoryCassandra todoRepo) {
+        this.repo = todoRepo;
+    }
     
     @GetMapping
     public Stream<Todo> findAll(HttpServletRequest req) {
-        return todoStore.values().stream().map(t -> t.setUrl(req));
+        return repo.findAll().stream()
+                   .map(TodoRestController::mapAsTodo)
+                   .map(t -> t.setUrl(req));
     }
     
     @GetMapping("/{uid}")
     public ResponseEntity<Todo> findById(HttpServletRequest req, @PathVariable(value = "uid") String uid) {
-        Todo todo = todoStore.get(UUID.fromString(uid));
-        return (null == todo) ? ResponseEntity.notFound().build() : ResponseEntity.ok(todo.setUrl(req));
+        Optional<TodoEntity> e = repo.findById(UUID.fromString(uid));
+        if (e.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(mapAsTodo(e.get()).setUrl(req.getRequestURL().toString()));
     }
      
     @PostMapping
     public ResponseEntity<Todo> create(HttpServletRequest req, @RequestBody Todo todoReq) 
     throws URISyntaxException {
-        Todo newTodo = new Todo(todoReq.getTitle(), todoReq.getOrder(), todoReq.isCompleted());
-        newTodo.setUrl(req);
-        todoStore.put(newTodo.getUuid(), newTodo);
-        return ResponseEntity.created(new URI(newTodo.getUrl())).body(newTodo);
+        TodoEntity te = mapAsTodoEntity(todoReq);
+        repo.save(te);
+        todoReq.setUuid(te.getUid());
+        todoReq.setUrl(req);
+        return ResponseEntity.created(new URI(todoReq.getUrl())).body(todoReq);
     }
     
     @PatchMapping("{uid}")
     public ResponseEntity<Todo> update(HttpServletRequest req, @PathVariable(value = "uid") String uid, @RequestBody Todo todoReq) 
     throws URISyntaxException {
-        if (!todoStore.containsKey(UUID.fromString(uid))) {
-            return ResponseEntity.notFound().build();
-        }
-        Todo existingTodo = todoStore.get(UUID.fromString(uid));
-        if (null != todoReq.getTitle()) {
-            existingTodo.setTitle(todoReq.getTitle());
-        }
-        if (existingTodo.getOrder() != todoReq.getOrder()) {
-            existingTodo.setOrder(todoReq.getOrder());
-        }
-        if (existingTodo.isCompleted() != todoReq.isCompleted()) {
-            existingTodo.setCompleted(todoReq.isCompleted());
-        }
-        return ResponseEntity.accepted().body(existingTodo);
+        todoReq.setUuid(UUID.fromString(uid));
+        todoReq.setUrl(req.getRequestURL().toString());
+        repo.save(mapAsTodoEntity(todoReq));
+        return ResponseEntity.accepted().body(todoReq);
     }
     
     @DeleteMapping("{uid}")
     public ResponseEntity<Void> deleteById(@PathVariable(value = "uid") String uid) {
-        if (!todoStore.containsKey(UUID.fromString(uid))) {
+        if (!repo.existsById(UUID.fromString(uid))) {
             return ResponseEntity.notFound().build();
         }
-        todoStore.remove(UUID.fromString(uid));
+        repo.deleteById(UUID.fromString(uid));
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
     
     @DeleteMapping
     public ResponseEntity<Void> deleteAll(HttpServletRequest request) {
-        todoStore.clear();
+        repo.deleteAll();
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+    
+    private static Todo mapAsTodo(TodoEntity te) {
+        Todo todo = new Todo();
+        todo.setTitle(te.getTitle());
+        todo.setOrder(te.getOrder());
+        todo.setUuid(te.getUid());
+        todo.setCompleted(te.isCompleted());
+        return todo;
+    }
+    
+    private static TodoEntity mapAsTodoEntity(Todo te) {
+        TodoEntity todo = new TodoEntity();
+        if (null != te.getUuid()) {
+            todo.setUid(te.getUuid());
+        } else {
+            todo.setUid(UUID.randomUUID());
+        }
+        todo.setTitle(te.getTitle());
+        todo.setOrder(te.getOrder());
+        todo.setCompleted(te.isCompleted());
+        return todo;
     }
 }
