@@ -1,145 +1,200 @@
-# PART2
+# PART3
 
 **Table of Content**
-- **[1. Create a CRUD Controller](#1-create-a-crud-controller)**
-- **[2. Test your Controller](#2-test-your-controller)**
-- **[3. Sample Curl commands](#3-sample-curl-commands)**
+- **[1. Create your Astra Instance](#1-create-a-crud-controller)**
+- **[2. Connectivity to Cassandra](#2-test-your-controller)**
+- **[ 3. Connect the application to ASTRA](#3-sample-curl-commands)**
 
 ---
 
-## 1. Create a CRUD Controller
+## 1. Create your Astra instance
 
-Based on the screen we can design the following entity. The `URL` attribute is brought by the specification in an HateOAS approach, links to each resource is explicit
+`ASTRA` service is available at url [https://astra.datastax.com](https://dtsx.io/workshop). `ASTRA` is the simplest way to run Cassandra with zero operations at all - just push the button and get your cluster. `Astra` offers **5 Gb Tier Free Forever** and you **don't need a credit card** or anything to sign-up and use it. 
 
-**Sample JSON output:**
-```json
-{
- url: "http://localhost:8080/api/v1/todos/415fa735-d432-4dda-8558-db6cfddea03a",
- uuid: "415fa735-d432-4dda-8558-db6cfddea03a",
- title: "blah",
- completed: false,
- order: 95
-}
+**✅ Step 1a. Register (if needed) and Sign In to Astra** 
+
+You can use your `Github`, `Google` accounts or register with an `email`.
+
+Make sure to chose a password with minimum 8 characters, containing upper and lowercase letters, at least one number and special character
+
+[Authentication Page](https://dtsx.io/workshop)
+
+![Login Image](https://github.com/datastaxdevs/shared-assets/blob/master/astra/signin-raw.png?raw=true)
+
+**✅ Step 1b. Choose the free plan and select your region**
+
+![my-pic](https://github.com/DataStax-Academy/battlestax/blob/master/tutorial/creatastra-1.png?raw=true)
+
+- **Select the free tier**: 5GB storage, no obligation
+
+- **Select the region**: This is the region where your database will reside physically (choose one close to you or your users). For people in EMEA please use `europe-west1` idea here is to reduce latency.
+
+**✅ Step 1c. Configure and create your database**
+
+You will find below which values to enter for each field.
+
+![my-pic](https://github.com/DataStax-Academy/battlestax/blob/master/tutorial/creatastra-2.png?raw=true)
+
+- **Fill in the database name** - `myfreetierdb` While Astra allows you to fill in these fields with values of your own choosing, please follow our reccomendations to make the rest of the exercises easier to follow. If you don't, you are on your own! :)
+
+- **Fill in the keyspace name** - `todokeyspace`. It's really important that you use the name battlestax here in order for all the exercises to work well. We realize you want to be creative, but please just roll with this one today.
+
+- **Fill in the Database User name** - `todouser`. Note the user name is case-sensitive. Please use the case we suggest here.
+
+- **Fill in the password** - `todo_password1`. Fill in both the password and the confirmation fields. Note that the password is also case-sensitive. Please use the case we suggest here.
+
+- **Create the database**. Review all the fields to make sure they are as shown, and click the **`Create Database`** button.<br/><br/>You will see your new database `Pending` in the Dashboard.
+
+![my-pic](https://github.com/DataStax-Academy/battlestax/blob/master/tutorial/creatastra-3.png?raw=true)
+
+The status will change to `Active` when the database is ready, this will only take 2-3 minutes. You will also receive an email when it is ready.
+
+## 2. Connectivity to Cassandra
+
+With our `Cassandra-as-a-service` instance ready let's connect from our application.
+
+**✅ Step 2a. Get the secure connect bundle** : Go to Astra home page and locate the connect button. as displayed on the picture below.
+
+![TodoBackend](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/astra-connect.png?raw=true) 
+
+Once on **Connect** screen pick `Java` on the left part and locate the `Secure Connect Bundle` link. Copy the link with a right click
+
+![TodoBackend](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/astra-securebundle.png?raw=true)
+
+In gitpod, make sure to be on folder `spring-data-cassandra` and execute the following substituting the link. Becareful about the double quote they are mandator
+
+```bash
+curl -L "<Your_link>" > /workspace/workshop-spring-data-cassandra/creds.zip 
 ```
 
-✅ **Step 1a:** Create the following Bean
+Now check the size of  `creds.zip` file, it should be about 12KB. If the file is too small do the operation again but refresh astra page first. It means your link has timeout.
+
+```bash
+gitpod /workspace/workshop-spring-data-cassandra $ ls -l
+total 28
+-rw-r--r-- 1 gitpod gitpod 12367 Dec 14 13:16 creds.zip
+drwxr-xr-x 2 gitpod gitpod  4096 Dec 13 20:41 images
+-rw-r--r-- 1 gitpod gitpod  2129 Dec 13 20:41 README.MD
+drwxr-xr-x 3 gitpod gitpod  4096 Dec 13 20:42 todobackend-springdata
+```
+
+**✅ Step 2b. Fix unit test `Ex1_ConnectivityToAstraExplicitTest.java`**
+
+
+Unit Tests are located in `src/test/java`. 
+Open the file `Ex1_ConnectivityToAstraExplicitTest` to 
+
+Open file `src/main/resources/application.properties` and edit the keys with values of you DB, if you use the value provided you don't have to change anything.
+
+```properties
+spring.data.cassandra.keyspace-name=todokeyspace
+spring.data.cassandra.username=todouser
+spring.data.cassandra.password=todo_password1
+```
+
+You can now run the UNIT TEST with your IDE or Maven in a terminal (easier with gitpod 
+```bash
+mvn test -Dtest=com.datastax.workshop.Ex1_ConnectivityToAstraExplicitTest#should_connect_to_Astra
+```
+
+**👁️ Expected output**
+
+```bash
+ConnectivityToAstraExplicitTest:  + [OK] - Connection Established to Astra with Keyspace todoapp
+```
+
+**✅ Step 2c. Run unit test `Ex2_CreateSchemaInAstraTest.java`**
+
+Open exercice 2 and see the code to connect and to create new table if not exist.
+
+```bash
+mvn test -Dtest=com.datastax.workshop.Ex2_CreateSchemaInAstraTest#should_create_expected_table
+```
+
+You can now go to the CQLConsole in ASTRA and describe the keyspace, our new table should be there
+
+```
+token@cqlsh> describe keyspace todokeyspace;
+
+CREATE KEYSPACE todokeyspace WITH replication = {'class': 'NetworkTopologyStrategy', 'dc-1': '1'}  AND durable_writes = true;
+
+CREATE TABLE todokeyspace.todos (
+    uid uuid PRIMARY KEY,
+    completed boolean,
+    offset int,
+    title text
+) WITH additional_write_policy = '99PERCENTILE'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'chunk_length_in_kb': '64', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99PERCENTILE';
+
+token@cqlsh> 
+```
+
+## 3. Connect the application to ASTRA
+
+With the file setup we can now provide a Cassandra connection in all beans of the application. By convention `spring-data` will read the different keys we provided.
+
+To enable the connectivity to ASTRA we need to add the following class.
 
 ```java
-@Data
-@AllArgsConstructor
-public class Todo {
-    private String  url;
-    private UUID    uuid;
-    private String  title;
-    private boolean completed = false;
-    private int     order = 0;
+package com.datastax.workshop.conf;
+
+import java.io.File;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.cassandra.CqlSessionBuilderCustomizer;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class SpringDataConfig {
+    
+    @Value("${datastax.astra.secure-connect-bundle}")
+    private File cloudSecureBundle;
+    
+    @Bean
+    public CqlSessionBuilderCustomizer sessionBuilderCustomizer() {
+        return builder -> 
+          builder.withCloudSecureConnectBundle(cloudSecureBundle.toPath());
+    }
+    
 }
 ```
 
-✅ **Step 1b:** Complete the following REST Controller uing an in-memory data structure of your choice to match the specification
+You can now remove any exclude we did before
 
 ```java
-@RestController
-@CrossOrigin(
-  methods = {POST, GET, OPTIONS, PUT, DELETE, PATCH},
-  maxAge = 3600,
-  allowedHeaders = {"x-requested-with", "origin", "content-type", "accept"},
-  origins = "*" 
-)
-@RequestMapping("/api/v1/todos/")
-public class TodoRestController {
+@SpringBootApplication
+public class SpringDataTestApplication {
 
- @GetMapping
- public Stream<Todo> findAll(HttpServletRequest req) {
-   // list all todos 
- }
-    
- @GetMapping("/{uid}")
- public ResponseEntity<Todo> findById(HttpServletRequest req, @PathVariable(value = "uid") String uid)
-   // return a todo
- }
-     
- @PostMapping
- public ResponseEntity<Todo> create(HttpServletRequest req, @RequestBody Todo todoReq) throws URISyntaxException {
-   // create a new todo
-   return new ResponseEntity.created(
-        new URI("<build_url>"))
-        .body(null);
- }
-    
- @PatchMapping("{uid}")
- public ResponseEntity<Todo> update(
-     HttpServletRequest req, 
-     @PathVariable(value = "uid") String uid, 
-     @RequestBody Todo todoReq) 
- throws URISyntaxException {
-     // update an existing Task
-     return ResponseEntity.accepted().body(null);
- }
-    
- @DeleteMapping("{uid}")
- public ResponseEntity<Void> deleteById(@PathVariable(value = "uid") String uid) {
-   // if not found
-   //return ResponseEntity.notFound().build();
-   return new ResponseEntity<>(HttpStatus.NO_CONTENT);
- }
-
- @DeleteMapping
- public ResponseEntity<Void> deleteAll(HttpServletRequest request) {
-   // edit the structure
-   return new ResponseEntity<>(HttpStatus.NO_CONTENT);
- }
+	public static void main(String[] args) {
+		SpringApplication.run(SpringDataTestApplication.class, args);
+	}
 
 }
 ```
 
-## 2. Test your Controller
-
-✅ **Step 2a:** Run the test specifications to validate your implementation [https://www.todobackend.com/specs/index.html](https://www.todobackend.com/specs/index.html) providing the URL of your endpoint.
-
-
-✅ **Step 2b:** Play with your implementation [https://www.todobackend.com/client/index.html](https://www.todobackend.com/client/index.html) providing the URL of your endpoint.
-
-## 3. Sample Curl commands
-
-You can access to the CRUD operations with the following CURL. You can use either the `CRUD` command line or [https://reqbin.com/curl](https://reqbin.com/curl).
-
-- List all features with **findAll**
-
-```
-curl http://<your_endpoint>/api/v1/todos
-```
-
-- Delete all features with**deleteAll**
+You can now restar the application it should work.
 
 ```bash
-curl -X DELETE http://<your_endpoint>/api/v1/todos
+mvn spring-boot:run
 ```
 
-- Read a Todo
-
-```bash
-curl http://<your_endpoint>/api/v1/todos/1eae2a0d-219c-4ff7-b9fd-3a460f399c49
-```
-
-- delete a Task
-
-```bash
-curl -X DELETE  http://<your_endpoint>/api/v1/todos/6cf009f9-f35e-46d6-9be2-ffe6f0dde4ba
-```
-
-- Create a Task
-
-```bash
-curl -X POST http://<your_endpoint>/api/v1/todos/ \
-	 -H "Content-Type: application/json" \
-     -d "{\"title\":\"Sample Task\"}"
-```
 
 --- 
-
-Let's implements a real backend now
+Let's implements the repository in part4
 
 ```bash
-git checkout -b PART3
+git checkout -b PART4
 ```

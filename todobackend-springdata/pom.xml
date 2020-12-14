@@ -43,11 +43,38 @@
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
+		
+		<!-- Test -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+			<exclusions>
+		        <exclusion>
+		          <groupId>org.junit.vintage</groupId>
+		          <artifactId>junit-vintage-engine</artifactId>
+		        </exclusion>
+		        <exclusion>
+		          <groupId>com.vaadin.external.google</groupId>
+		          <artifactId>android-json</artifactId>
+		        </exclusion>
+		    </exclusions>
 		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-runner</artifactId>
+            <scope>test</scope>
+        </dependency>
 	</dependencies>
 
 	<build>
