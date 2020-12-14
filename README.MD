@@ -1,9 +1,9 @@
 # PART2
 
 **Table of Content**
-- **[1. Create a CRUD Controller](#1-create-inmemory-repository)**
-- **[2. Test your Controller](#)**
-- **[3. Sample Curl commands](#)**
+- **[1. Create a CRUD Controller](#1-create-a-crud-controller)**
+- **[2. Test your Controller](#2-test-your-controller)**
+- **[3. Sample Curl commands](#3-sample-curl-commands)**
 
 ---
 
