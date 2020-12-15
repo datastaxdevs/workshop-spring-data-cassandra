@@ -1,22 +1,21 @@
 
 # Hands-On Spring Data Cassandra
 
-![SplashScreen](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/splash.jpeg?raw=true)
 
 [![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/DataStax-Academy/workshop-spring-data-cassandra) 
 [![License Apache2](https://img.shields.io/hexpm/l/plug.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 [![Discord](https://img.shields.io/discord/685554030159593522)](https://discord.com/widget?id=685554030159593522&theme=dark)
 
+Today we will develop the famous TodoApplication backend with a storage in **Apache Cassandra™** with **Spring Boot** and **Spring Data**
 
-Today we are creating the Todo Application with storage in Apache Cassandra™.
+![SplashScreen](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/splash.jpeg?raw=true)
 
-## 1. Bootstrapping 
+
+## 1. Launch Gitpod
 
 [Gitpod](https://www.gitpod.io/) is an IDE 100% online based on Eclipse Theia. To initialize your environment simply click on the button below *(CTRL + Click to open in new tab)* You will be asked for you github account.
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/DataStax-Academy/workshop-spring-data-cassandra)
-
-Target url looks like  `https://<your_uid>.<your_region>.gitpod.io/#/workspace/workshop-spring-data-cassandra`. These URL's are dynamic and we cannot provide clickable links in advance. You will need to copy-paste `<your_uid>.<your_region>` as we will insert them in each URL during the exercises.
 
 **👁️ Expected output**
 
@@ -24,13 +23,30 @@ Target url looks like  `https://<your_uid>.<your_region>.gitpod.io/#/workspace/w
 
 ![TodoBackendClient](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/gitpod-home.png?raw=true)
 
-**That's it.** Gitpod provides all tools we will need today including `Maven` and exporting port `8080`. At initialization of the workspace we schedule a `mvn clean install` to download dependencies. You can still download the repository and bookmark it as all materials including slides are included.
+**That's it.** Gitpod provides all tools we will need today including `Maven` and exporting port `8080`. At initialization of the workspace we schedule a `mvn clean install` to download dependencies.
 
-```
-💻 There is nothing preventing you it for running the project on your laptop you need `Maven` and an `IDE` like Spring STS but you are on yout own.
+## 2. Know your gitpod
+
+The workshop has been opened on an ephemeral URL. To know the URL of your environment where application endpoint will be expose you can enter in a terminal:
+
+```bash
+gp url 8080
 ```
 
-Let's get starting:
+**👁️ Expected output**
+
+![TodoBackendClient](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/gitpod-url.png?raw=true)
+
+
+### Working on your laptop
+> 💻 There is nothing preventing you it for running the workshop on your laptop you need `Maven`, an `IDE` like **Spring STS**, and `curl` but you are on your own. You will have to adapt the commands and the path based on your environment.
+
+
+🚀 **Let's get starting**
+
+In a terminal move to branch `PART1` with the followign command
+
 ```bash
 git checkout PART1
 ```
+
