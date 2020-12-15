@@ -61,25 +61,26 @@ Once on **Connect** screen pick `Java` on the left part and locate the `Secure C
 
 ![TodoBackend](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/PART3/images/astra-securebundle.png?raw=true)
 
-In gitpod, make sure to be on folder `spring-data-cassandra` and execute the following substituting the link. Becareful about the double quote they are mandator
+In gitpod, execute the following to substitute the link. Becareful about the double quote they are mandatory. We download the ZIP **outside the repository** this way when we move from one branch to another we don't loose the
 
 ```bash
-curl -L "<Your_link>" > /workspace/workshop-spring-data-cassandra/creds.zip 
+curl -L "<Your_link>" > /tmp/creds.zip 
 ```
 
 Now check the size of  `creds.zip` file, it should be about 12KB. If the file is too small do the operation again but refresh astra page first. It means your link has timeout.
 
+```
+ls -l /tmp/creds.zip 
+```
+
+**👁️ Expected output**
+
 ```bash
-gitpod /workspace/workshop-spring-data-cassandra $ ls -l
-total 28
--rw-r--r-- 1 gitpod gitpod 12367 Dec 14 13:16 creds.zip
-drwxr-xr-x 2 gitpod gitpod  4096 Dec 13 20:41 images
--rw-r--r-- 1 gitpod gitpod  2129 Dec 13 20:41 README.MD
-drwxr-xr-x 3 gitpod gitpod  4096 Dec 13 20:42 todobackend-springdata
+gitpod /workspace/workshop-spring-data-cassandra $ ls -l /tmp/creds.zip 
+-rw-r--r-- 1 gitpod gitpod 12374 Dec 15 13:42 /tmp/creds.zip
 ```
 
 **✅ Step 2b. Fix unit test `Ex1_ConnectivityToAstraExplicitTest.java`**
-
 
 Unit Tests are located in `src/test/java`. 
 Open the file `Ex1_ConnectivityToAstraExplicitTest` to 
@@ -100,7 +101,23 @@ mvn test -Dtest=com.datastax.workshop.Ex1_ConnectivityToAstraExplicitTest#should
 **👁️ Expected output**
 
 ```bash
-ConnectivityToAstraExplicitTest:  + [OK] - Connection Established to Astra with Keyspace todoapp
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.datastax.workshop.Ex1_ConnectivityToAstraExplicitTest
+13:46:47.920 INFO  com.datastax.workshop.Ex1_ConnectivityToAstraExplicitTest :  + [OK] - Connection Established to Astra with Keyspace todokeyspace
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.908 s - in com.datastax.workshop.Ex1_ConnectivityToAstraExplicitTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  8.591 s
+[INFO] Finished at: 2020-12-15T13:46:50Z
+[INFO] ------------------------------------------------------------------------
 ```
 
 **✅ Step 2c. Run unit test `Ex2_CreateSchemaInAstraTest.java`**
@@ -111,7 +128,32 @@ Open exercice 2 and see the code to connect and to create new table if not exist
 mvn test -Dtest=com.datastax.workshop.Ex2_CreateSchemaInAstraTest#should_create_expected_table
 ```
 
+**👁️ Expected output**
+
+```bash
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.datastax.workshop.Ex2_CreateSchemaInAstraTest
+13:47:35.022 INFO  com.datastax.workshop.Ex2_CreateSchemaInAstraTest : Connection Established to Astra with Keyspace 'todokeyspace'
+13:47:35.061 INFO  com.datastax.workshop.Ex2_CreateSchemaInAstraTest : Table 'todos' has been created (if needed).
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.015 s - in com.datastax.workshop.Ex2_CreateSchemaInAstraTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  8.373 s
+[INFO] Finished at: 2020-12-15T13:47:37Z
+[INFO] ------------------------------------------------------------------------
+```
+
 You can now go to the CQLConsole in ASTRA and describe the keyspace, our new table should be there
+
+![.](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/raw/PART3/images/cqlconsole.png?raw=true)
 
 ```sql
 token@cqlsh> describe keyspace todokeyspace;
@@ -145,7 +187,7 @@ token@cqlsh>
 
 With the file setup we can now provide a Cassandra connection in all beans of the application. By convention `spring-data` will read the different keys we provided.
 
-To enable the connectivity to ASTRA we need to add the following class.
+To enable the connectivity to ASTRA we need to add the following file `SpringDataConfig.java` in the folder `conf`.
 
 ```java
 package com.datastax.workshop.conf;
@@ -185,16 +227,22 @@ public class SpringDataTestApplication {
 }
 ```
 
-You can now restar the application it should work.
+You can now restart the application it should work.
 
 ```bash
 mvn spring-boot:run
 ```
 
+Open the preview with, your app is now connected to Cassandra
+```
+gp preview $(gp url 8080)/
+```
 
 --- 
 Let's implements the repository in part4
 
 ```bash
-git checkout PART4
+git fetch --all
+git reset --hard origin/PART4
+git checkout PART4 
 ```
