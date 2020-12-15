@@ -17,7 +17,17 @@ In previous step we created an entity `TodoEntity` not dealing with the resource
 Let's annotate the bean in a way we define more `PrimaryKey` and fields
 
 ```java
-// Beginning is skipped
+package com.datastax.workshop.todo;
+import java.util.UUID;
+import org.springframework.data.cassandra.core.mapping.CassandraType;
+import org.springframework.data.cassandra.core.mapping.CassandraType.Name;
+import org.springframework.data.cassandra.core.mapping.Column;
+import org.springframework.data.cassandra.core.mapping.PrimaryKey;
+import org.springframework.data.cassandra.core.mapping.Table;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
@@ -47,15 +57,18 @@ public class TodoEntity {
     @Column(COLUMN_ORDER)
     @CassandraType(type = Name.INT)
     private int order = 0;
-
-// Getters, Setters, Constructors
+    
+    public TodoEntity(String title, int offset) {
+        this(UUID.randomUUID(), title, false, offset);
+    }
+}
 ```    
 
 ## 2. Create a Spring Data Repository
 
 There are 2 ways to create a repository. 
 
-- You can either do 100% with an interface extending `CassandraRepository<E, K>`.
+- You can either do 100% with an interface extending `CassandraRepository<E, K>`. Create a new file `CassandraRepository.java` in the todo folder. Use Gitpod to help you with the imports.
 
 ```java
 @Repository
@@ -93,7 +106,7 @@ public class TodoRepositorySimpleCassandra
 
 ## 3. Unit Test of the repository
 
-We now want to leverage on SPring-boot to initiate the context for us and inject the implementation. We can sinply do: check that this unit test is passing.
+We now want to leverage on Spring-boot to initiate the context for us and inject the implementation. We can sinply do: check that this unit test is passing.
 
 ```java
 @SpringBootTest
