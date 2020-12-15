@@ -25,11 +25,11 @@ Today we will develop the famous TodoApplication backend with a storage in **Apa
 
 **That's it.** Gitpod provides all tools we will need today including `Maven` and exporting port `8080`. At initialization of the workspace we schedule a `mvn clean install` to download dependencies.
 
-Also you may have noticed there is a build happening - even before starting. We put a sample project in there and trigger a build to download all the maven dependencies right away.
+Also you may have noticed there is a build happening - even before we get started. The sample project already exists and loading the developer enviroment triggers a build to download all the maven dependencies so you don't have to.
 
 ## 2. Know your gitpod
 
-The workshop has been opened on an ephemeral URL. To know the URL of your environment where application endpoint will be expose you can enter in a terminal:
+The workshop application has opened with an ephemeral URL. To know the URL where your application endpoint will be exposed you can run the following command in the terminal:
 
 ```bash
 gp url 8080
@@ -41,7 +41,7 @@ gp url 8080
 
 
 ### Working on your laptop
-> 💻 There is nothing preventing you it for running the workshop on your laptop you need `Maven`, an `IDE` like **Spring STS**, and `curl` but you are on your own. You will have to adapt the commands and the path based on your environment.
+> 💻 There is nothing preventing you from running the workshop on your own laptop. If you do so you will need Maven, an IDE like Spring STS, and curl. You will have to adapt the commands and the path based on your environment and install the dependencies yourself.
 
 
 🚀 **Let's get starting**
