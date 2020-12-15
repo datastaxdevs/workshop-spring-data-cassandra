@@ -227,7 +227,29 @@ public class SpringDataTestApplication {
 }
 ```
 
-You can now restart the application it should work.
+You can now restart execute the following test
+
+```bash
+mvn test -Dtest=com.datastax.workshop.TodobackendSpringdataApplicationTests#contextLoads
+```
+
+```
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.103 s - in com.datastax.workshop.TodobackendSpringdataApplicationTests
+14:03:36.924 WARN  org.springframework.beans.factory.support.DisposableBeanAdapter : Destroy method 'close' on bean with name 'cassandraDriverConfigLoader' threw an exception: java.util.concurrent.RejectedExecutionException: event executor terminated
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  9.266 s
+[INFO] Finished at: 2020-12-15T14:03:37Z
+[INFO] ------------------------------------------------------------------------
+```
+
+The application should now work as well.
 
 ```bash
 mvn spring-boot:run
