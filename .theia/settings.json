@@ -1,4 +1,5 @@
 {
-    "editor.autoSave": "on"
+    "editor.autoSave": "on",
+    "java.configuration.updateBuildConfiguration": "interactive"
 }
 
