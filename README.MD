@@ -25,6 +25,8 @@ Today we will develop the famous TodoApplication backend with a storage in **Apa
 
 **That's it.** Gitpod provides all tools we will need today including `Maven` and exporting port `8080`. At initialization of the workspace we schedule a `mvn clean install` to download dependencies.
 
+Also you may have noticed there is a build happening - even before starting. We put a sample project in there and trigger a build to download all the maven dependencies right away.
+
 ## 2. Know your gitpod
 
 The workshop has been opened on an ephemeral URL. To know the URL of your environment where application endpoint will be expose you can enter in a terminal:
@@ -44,7 +46,7 @@ gp url 8080
 
 🚀 **Let's get starting**
 
-In a terminal move to branch `PART1` with the followign command
+To move to branch `PART1`, in a terminal use the following command
 
 ```bash
 git checkout PART1
