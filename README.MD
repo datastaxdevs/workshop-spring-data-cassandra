@@ -9,24 +9,27 @@
 
 ## 1. Create a CRUD Controller
 
-Based on the screen we can design the following entity. The `URL` attribute is brought by the specification in an HateOAS approach, links to each resource is explicit
+Checking the specification this is the ouput json should look like
+Reminder: [https://todo-back-springboot220-java12.herokuapp.com/todos](https://todo-back-springboot220-java12.herokuapp.com/todos)
 
-**Sample JSON output:**
 ```json
 {
- url: "http://localhost:8080/api/v1/todos/415fa735-d432-4dda-8558-db6cfddea03a",
- uuid: "415fa735-d432-4dda-8558-db6cfddea03a",
- title: "blah",
- completed: false,
- order: 95
+  url: "http://localhost:8080/api/v1/todos/415fa735-d432-4dda-8558-db6cfddea03a",
+  uuid: "415fa735-d432-4dda-8558-db6cfddea03a",
+  title: "blah",
+  completed: false,
+  order: 95
 }
 ```
 
-✅ **Step 1a:** Create the following Bean
+✅ **Step 1a:** Create the following `Todo.java` file in a new package `todo`. The `URL` attribute is brought by the specification in an HateOAS approach, links to each resource is explicit
 
 ```java
+package com.datastax.workshop.todo;
+import java.util.UUID;
+import lombok.Data;
+
 @Data
-@AllArgsConstructor
 public class Todo {
     private String  url;
     private UUID    uuid;
@@ -36,9 +39,40 @@ public class Todo {
 }
 ```
 
-✅ **Step 1b:** Complete the following REST Controller uing an in-memory data structure of your choice to match the specification
+✅ **Step 1b:** Create the following `TodoRestController.java` file in same folder. Complete the following REST Controller uing an in-memory data structure of your choice to match the specification.
 
 ```java
+package com.datastax.workshop.todo;
+
+import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.OPTIONS;
+import static org.springframework.web.bind.annotation.RequestMethod.PATCH;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
+import static org.springframework.web.bind.annotation.RequestMethod.PUT;
+
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.Map;
+import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Stream;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+
 @RestController
 @CrossOrigin(
   methods = {POST, GET, OPTIONS, PUT, DELETE, PATCH},
@@ -52,17 +86,19 @@ public class TodoRestController {
  @GetMapping
  public Stream<Todo> findAll(HttpServletRequest req) {
    // list all todos 
+   return null;
  }
     
  @GetMapping("/{uid}")
- public ResponseEntity<Todo> findById(HttpServletRequest req, @PathVariable(value = "uid") String uid)
+ public ResponseEntity<Todo> findById(HttpServletRequest req, @PathVariable(value = "uid") String uid) {
    // return a todo
+   return null;
  }
      
  @PostMapping
  public ResponseEntity<Todo> create(HttpServletRequest req, @RequestBody Todo todoReq) throws URISyntaxException {
    // create a new todo
-   return new ResponseEntity.created(
+   return ResponseEntity.created(
         new URI("<build_url>"))
         .body(null);
  }
@@ -92,6 +128,14 @@ public class TodoRestController {
 
 }
 ```
+
+You don't have to complete all in the 10min but try the first methods. Tips to get the URL of a current `HttpServletRequest` req, you can do:
+
+```java
+String reqUrl = req.getRequestURL().toString();
+```
+
+<details><summary><i>🖱️ Click me to show correction</i></summary><br/><a href="https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/PART3/todobackend-springdata/src/main/java/com/datastax/workshop/todo/Todo.java"><li>Todo.java</a><br/><a href=https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/PART3/todobackend-springdata/src/main/java/com/datastax/workshop/todo/TodoRestController.java"><li>TodoRestController.java</a><br/></details>
 
 ## 2. Test your Controller
 
