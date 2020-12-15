@@ -13,9 +13,9 @@
 
 **✅ Step 1a. Register (if needed) and Sign In to Astra** 
 
-You can use your `Github`, `Google` accounts or register with an `email`.
+You can use your `Github` or `Google` account or if you would rather you can register directly with an `email`.
 
-Make sure to chose a password with minimum 8 characters, containing upper and lowercase letters, at least one number and special character
+Make sure to chose a password with minimum 8 characters, containing an upper and lowercase letter, and at least one number and special character
 
 [Authentication Page](https://dtsx.io/workshop)
 
@@ -27,11 +27,11 @@ Make sure to chose a password with minimum 8 characters, containing upper and lo
 
 - **Select the free tier**: 5GB storage, no obligation
 
-- **Select the region**: This is the region where your database will reside physically (choose one close to you or your users). For people in EMEA please use `europe-west1` idea here is to reduce latency.
+- **Select the region**: This is the region where your database will reside physically (choose one close to you or your users). For people in EMEA please use `europe-west1` the idea here is to reduce latency.
 
 **✅ Step 1c. Configure and create your database**
 
-You will find below which values to enter for each field.
+Below you will find the values to enter for each field.
 
 ![my-pic](https://github.com/DataStax-Academy/battlestax/blob/master/tutorial/creatastra-2.png?raw=true)
 
@@ -43,7 +43,7 @@ You will find below which values to enter for each field.
 
 - **Fill in the password** - `todo_password1`. Fill in both the password and the confirmation fields. Note that the password is also case-sensitive. Please use the case we suggest here.
 
-- **Create the database**. Review all the fields to make sure they are as shown, and click the **`Create Database`** button.<br/><br/>You will see your new database `Pending` in the Dashboard.
+- **Create the database**. Review all the fields to make sure they are the same as shown, and click the **`Create Database`** button.<br/><br/>You will see your new database `Pending` in the Dashboard.
 
 ![my-pic](https://github.com/DataStax-Academy/battlestax/blob/master/tutorial/creatastra-3.png?raw=true)
 
@@ -53,15 +53,15 @@ The status will change to `Active` when the database is ready, this will only ta
 
 With our `Cassandra-as-a-service` instance ready let's connect from our application.
 
-**✅ Step 2a. Get the secure connect bundle** : Go to Astra home page and locate the connect button. as displayed on the picture below.
+**✅ Step 2a. Get the secure connect bundle** : Go to the Astra home page and locate the connect button. as displayed on the picture below.
 
 ![TodoBackend](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/PART3/images/astra-connect.png?raw=true) 
 
-Once on **Connect** screen pick `Java` on the left part and locate the `Secure Connect Bundle` link. Copy the link with a right click
+Once on the **Connect** screen pick `Java` on the left pannel and locate the `Secure Connect Bundle` link. Copy the link with a right click
 
 ![TodoBackend](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/PART3/images/astra-securebundle.png?raw=true)
 
-In gitpod, execute the following to substitute the link. Becareful about the double quote they are mandatory. We download the ZIP **outside the repository** this way when we move from one branch to another we don't loose the
+In gitpod, execute the following command and substitute the link you copied in the previous step. Becareful about the double quotes as they are mandatory. We are downloading the ZIP **outside the repository** this way when we move from one branch to another we don't loose it.
 
 ```bash
 curl -L "<Your_link>" > /tmp/creds.zip 
@@ -83,9 +83,9 @@ gitpod /workspace/workshop-spring-data-cassandra $ ls -l /tmp/creds.zip
 **✅ Step 2b. Fix unit test `Ex1_ConnectivityToAstraExplicitTest.java`**
 
 Unit Tests are located in `src/test/java`. 
-Open the file `Ex1_ConnectivityToAstraExplicitTest` to 
+Open the file `Ex1_ConnectivityToAstraExplicitTest` 
 
-Open file `src/main/resources/application.properties` and edit the keys with values of you DB, if you use the value provided you don't have to change anything.
+Open file `src/main/resources/application.properties` and edit the keys with values of your DB, if you used the values provided you don't have to change anything.
 
 ```properties
 spring.data.cassandra.keyspace-name=todokeyspace
@@ -122,7 +122,7 @@ mvn test -Dtest=com.datastax.workshop.Ex1_ConnectivityToAstraExplicitTest#should
 
 **✅ Step 2c. Run unit test `Ex2_CreateSchemaInAstraTest.java`**
 
-Open exercice 2 and see the code to connect and to create new table if not exist.
+Open exercice 2 and see the code to connect and to create a new table if it does not exist.
 
 ```bash
 mvn test -Dtest=com.datastax.workshop.Ex2_CreateSchemaInAstraTest#should_create_expected_table
@@ -157,6 +157,10 @@ You can now go to the CQLConsole in ASTRA and describe the keyspace, our new tab
 
 ```sql
 token@cqlsh> describe keyspace todokeyspace;
+```
+
+The output should look like this
+```
 
 CREATE KEYSPACE todokeyspace WITH replication = {'class': 'NetworkTopologyStrategy', 'dc-1': '1'}  AND durable_writes = true;
 
@@ -187,7 +191,7 @@ token@cqlsh>
 
 With the file setup we can now provide a Cassandra connection in all beans of the application. By convention `spring-data` will read the different keys we provided.
 
-To enable the connectivity to ASTRA we need to add the following file `SpringDataConfig.java` in the folder `conf`.
+To enable the connectivity to ASTRA we need to create the following file `SpringDataConfig.java` in the folder `conf`.
 
 ```java
 package com.datastax.workshop.conf;
@@ -214,7 +218,7 @@ public class SpringDataConfig {
 }
 ```
 
-You can now remove any exclude we did before
+You can now remove the excludes we added before
 
 ```java
 @SpringBootApplication
@@ -227,7 +231,7 @@ public class SpringDataTestApplication {
 }
 ```
 
-You can now restart execute the following test
+You can now re-execute the following test
 
 ```bash
 mvn test -Dtest=com.datastax.workshop.TodobackendSpringdataApplicationTests#contextLoads
@@ -261,7 +265,7 @@ gp preview $(gp url 8080)/
 ```
 
 --- 
-Let's implements the repository in part4
+Let's implement the repository in part4
 
 ```bash
 git fetch --all
