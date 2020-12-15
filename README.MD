@@ -148,6 +148,8 @@ Yiu do have a new endpoint, simply use in the terminal to open this is preview.
 gp preview $(gp url 8080)/api/v1/todos/
 ```
 
+![.](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/raw/PART2/images/gitpod-preview-0.png?raw=true)
+
 ## 2. Sample Curl commands
 
 You can access to the CRUD operations with the following CURL in a new terminal.
@@ -194,13 +196,15 @@ curl -X DELETE $(gp url 8080)/api/v1/todos/
 gp preview https://www.todobackend.com/specs/index.html?$(gp url 8080)/api/v1/todos/
 ```
 
+![.](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/raw/PART2/images/gitpod-preview.png?raw=true)
+
 ✅ **Step 2b:** Play with your implementation [https://www.todobackend.com/client/index.html](https://www.todobackend.com/client/index.html) providing the URL of your endpoint.
 
 ```
 gp preview https://www.todobackend.com/client/index.html?$(gp url 8080)/api/v1/todos/
 ```
 
-![.](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/raw/PART2/images/gitpod-preview.png?raw=true)
+![.](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/raw/PART2/images/gitpod-preview-2.png?raw=true)
 
 --- 
 
