@@ -44,6 +44,13 @@
 			<optional>true</optional>
 		</dependency>
 		
+		<!-- Doc -->
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-ui</artifactId>
+			<version>1.5.1</version>
+		</dependency>
+		
 		<!-- Test -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
