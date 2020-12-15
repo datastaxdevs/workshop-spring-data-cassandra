@@ -8,7 +8,7 @@
 
 ---
 
-For simplicity all exercise instructions are listed in a single `README.MD` document. As it is quite long we provide a table of contents after each chapter so you can go back to it.
+For simplicity all exercise instructions are listed in a single `README.MD` document. As it is quite long we provide a table of contents after each chapter so you can navigate it easily.
 
 ## 1. Run Existing TodoApplication
 
@@ -16,14 +16,14 @@ For simplicity all exercise instructions are listed in a single `README.MD` docu
 
 ![TodoMVC](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/todomvc.png?raw=true)
 
-**✅ Step 1a. Visit [TodoMVC.com](http://todomvc.com/) to discover what we are building today** : We want you to see what it look like before starting anything. So simply access the URL [http://todomvc.com/](http://todomvc.com/) and browse. You will see that there are multiple implementations, pick one of those and test it live in your browser.
+**✅ Step 1a. Visit [TodoMVC.com](http://todomvc.com/) to discover what we are building today** : We want you to see what it looks like before starting anything. So please browse to [http://todomvc.com/](http://todomvc.com/) and take a look. You will see that there are multiple implementations, feel free to pick one of those and test it live in your browser.
 
 
-**Todo-Backend** is a shared example to showcase backend tech stacks. The Todo-Backend project defines a simple web API spec - for managing a todo list. Contributors implement that spec using various tech stacks. Those implementations are cataloged below. A spec runner verifies that each contribution implements the exact same API, by running an automated test suite which defines the API.
+**Todo-Backend** is an example to showcase backend tech stacks. The Todo-Backend project defines a simple web API spec for managing a todo list. Contributors implement that spec using various tech stacks. Those implementations are cataloged below. A spec runner verifies that each contribution implements the exact same API, by running an automated test suite which defines the API.
 
 ![TodoBackend](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/todobackend.png?raw=true)
 
-There are multiple free implementations available. Some implementations provide endpoints to be tested in `heroku`. [Heroku provide free hosting for a Java application but this is on-demand](https://devcenter.heroku.com/articles/deploying-spring-boot-apps-to-heroku). With `Heroku` The application will be sleeping until you access the endpoint. So it will take 30s for the first person to have the application running. Among the available free endpoints we can list:
+There are multiple free implementations available. Some implementations provide endpoints to be tested in `heroku`. [Heroku provide free hosting for a Java application but this is on-demand](https://devcenter.heroku.com/articles/deploying-spring-boot-apps-to-heroku). With `Heroku` The application will be incative until you access the endpoint. Due to this it will take 30s for the first person hitting the endpoint to wake up the application. Among the available free endpoints we can list:
 - `#1` : [https://todo-back-springboot220-java12.herokuapp.com/todos](https://todo-back-springboot220-java12.herokuapp.com/todos)
 - `#2` : [https://todo-quarkus.herokuapp.com/todos](https://todo-quarkus.herokuapp.com/todos)
 - `#3` : [https://todo-backend-micronaut.herokuapp.com/todos](https://todo-backend-micronaut.herokuapp.com/todos)
@@ -40,7 +40,7 @@ There are multiple free implementations available. Some implementations provide 
 
 ![TodoBackendOuput](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/todobackend-output-host.png?raw=true)
 
-**Note:** *During the live stream we will be dozens of people testing the same endpoints - maybe - we could hit some slowness or issues with race conditions.*
+**Note:** *During the live stream there will be dozens of people testing the same endpoints.  It is possible that we could hit some slowness or issues with race conditions.*
 
 **✅ Step 2c. Test TodoBackEnd Web Client** : todoBackend.com provides a [client](https://www.todobackend.com/client/index.html) to work with the API. As before pick one of the `endpoints` listed before and try the client.
 
@@ -54,7 +54,7 @@ There are multiple free implementations available. Some implementations provide 
 
 ![TodoBackendClient](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/todobackend-output-client.png?raw=true)
 
-Our mission withing the next hour is to implement the *backend API* and store  data into Apache Cassandra™. We have you covered by providing the skeleton of the application.
+Our mission in the next hour is to implement the *backend API* and store data into Apache Cassandra™. We have you covered by providing the skeleton of the application.
 
 ## 2. Create your Spring-Boot Application
 
@@ -62,16 +62,16 @@ Our mission withing the next hour is to implement the *backend API* and store  d
 
 [Start.spring.io](http://start.spring.io) routes you to the Spring Initializr which helps you create projects from scratch.
 
-Fill the different fields as shown in the picture below. As we are lazy click [THIS LINK](https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.4.1.RELEASE&packaging=jar&jvmVersion=11&groupId=com.datastax.workshop&artifactId=todobackend-springdata&name=todobackend-springdata&description=TodoBackend%20Spring%20Boot%20Microservices%20with%20Spring%20Data%20for%20Apache%20Cassandra&packageName=com.datastax.workshop&dependencies=data-cassandra,devtools,web,lombok,actuator)
+Fill the different fields as shown in the picture below. As we are lazy, click [THIS LINK](https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.4.1.RELEASE&packaging=jar&jvmVersion=11&groupId=com.datastax.workshop&artifactId=todobackend-springdata&name=todobackend-springdata&description=TodoBackend%20Spring%20Boot%20Microservices%20with%20Spring%20Data%20for%20Apache%20Cassandra&packageName=com.datastax.workshop&dependencies=data-cassandra,devtools,web,lombok,actuator)
  to have everything populated already.
 
 ![TodoBackendClient](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/spring-initializr.png?raw=true)
 
-Now simply you could simply click button **GENERATE** to download the ZIP but guess what the repository where you are (branch PART1) content exactly this content to avoid you import all this.
+Now you could simply click the **GENERATE** button to download the ZIP but the repository for this workshop (branch PART1) contains exactly the same content to avoid you having to import all this.
 
 ## 3. Start your Spring-Boot Application 
 
-**✅ Step 3b. Start Your application** : Make sure you are in proper folder and use this maven command to start the application.
+**✅ Step 3b. Start Your application** : Make sure you are in the proper folder and use this maven command to start the application.
 
 ```bash
 cd todobackend-springdata/
@@ -89,7 +89,7 @@ For those who read the text:
 - You will get an ERROR, THIS IS EXPECTED
 ```
 
-With dependencies introduced by Spring Data Cassandra, Spring Boot now wants to create beans to connect to Cassandra but, as of now we don't have any backend. It will come soon but for now let's add a couple of lines in the main class in order to remove autoconfigurations> we use proper exclude clauses in annotation `SpringBootApplication` in class `TodobackendSpringdataApplication`.
+With dependencies introduced by Spring Data Cassandra, Spring Boot now wants to create beans to connect to Cassandra but, as of now we don't have any backend. We will fix it soon but for now let's add a couple of lines in the main class.  In order to remove  autoconfigurations>  we use proper exclude clauses in the annotation `SpringBootApplication` in class `TodobackendSpringdataApplication`.
 
 Edit the `SpringBootApplication` and add the following exclude statements.
 
@@ -103,7 +103,7 @@ import org.springframework.boot.autoconfigure.data.cassandra.CassandraDataAutoCo
     CassandraAutoConfiguration.class 
 })
 ```
-You should be able to start the application now and the port 8080 will be open.
+You should now be able to start the application and port 8080 open automatically.
 
 ```bash
 mvn clean install spring-boot:run
@@ -142,7 +142,7 @@ mvn clean install spring-boot:run
 
 ![TodoBackendClient](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/PART1/images/gitpod-empty.png?raw=true)
 
-Pretty sad to have an error page because we do not have any controller yet, let's create some `HelloWorldRestController` in a new package `hello`:
+Pretty sad to have an error page when we do not have any controller, let's create one `HelloWorldRestController` in a new package `hello`:
 
 ```java
 package com.datastax.workshop.hello;
