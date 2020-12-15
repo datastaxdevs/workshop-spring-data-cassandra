@@ -2,8 +2,8 @@
 
 **Table of Content**
 - **[1. Create a CRUD Controller](#1-create-a-crud-controller)**
-- **[2. Test your Controller](#2-test-your-controller)**
-- **[3. Sample Curl commands](#3-sample-curl-commands)**
+- **[2. Sample Curl commands](#2-sample-curl-commands)**
+- **[3. Test your Controller](#3-test-your-controller)**
 
 ---
 
@@ -135,55 +135,79 @@ You don't have to complete all in the 10min but try the first methods. Tips to g
 String reqUrl = req.getRequestURL().toString();
 ```
 
-<details><summary><i>🖱️ Click me to show correction</i></summary><br/><a href="https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/PART3/todobackend-springdata/src/main/java/com/datastax/workshop/todo/Todo.java"><li>Todo.java</a><br/><a href=https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/PART3/todobackend-springdata/src/main/java/com/datastax/workshop/todo/TodoRestController.java"><li>TodoRestController.java</a><br/></details>
+<details><summary><i>🖱️ Click me to show correction</i></summary><br/><a href="https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/PART3/todobackend-springdata/src/main/java/com/datastax/workshop/todo/Todo.java"><li>Todo.java</a><br/><a href="https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/PART3/todobackend-springdata/src/main/java/com/datastax/workshop/todo/TodoRestController.java"><li>TodoRestController.java</a><br/></details>
 
-## 2. Test your Controller
+You can now start the application
+```bash
+mvn clean spring-boot:run
+```
 
-✅ **Step 2a:** Run the test specifications to validate your implementation [https://www.todobackend.com/specs/index.html](https://www.todobackend.com/specs/index.html) providing the URL of your endpoint.
+Yiu do have a new endpoint, simply use in the terminal to open this is preview.
 
+```bash
+gp preview $(gp url 8080)/api/v1/todos/
+```
 
-✅ **Step 2b:** Play with your implementation [https://www.todobackend.com/client/index.html](https://www.todobackend.com/client/index.html) providing the URL of your endpoint.
+## 2. Sample Curl commands
 
-## 3. Sample Curl commands
+You can access to the CRUD operations with the following CURL in a new terminal.
 
-You can access to the CRUD operations with the following CURL. You can use either the `CRUD` command line or [https://reqbin.com/curl](https://reqbin.com/curl).
+You can use either the `CRUD` command line or [https://reqbin.com/curl](https://reqbin.com/curl). Then each time change the base url.
+
+- Create a Task
+
+```bash
+curl -X POST $(gp url 8080)/api/v1/todos/ \
+	 -H "Content-Type: application/json" \
+   -d "{\"title\":\"Sample Task\"}"
+```
 
 - List all features with **findAll**
 
-```
-curl http://<your_endpoint>/api/v1/todos
-```
-
-- Delete all features with**deleteAll**
-
 ```bash
-curl -X DELETE http://<your_endpoint>/api/v1/todos
+curl $(gp url 8080)/api/v1/todos/
 ```
 
 - Read a Todo
 
 ```bash
-curl http://<your_endpoint>/api/v1/todos/1eae2a0d-219c-4ff7-b9fd-3a460f399c49
+curl $(gp url 8080)/api/v1/todos/<your_id>
 ```
 
 - delete a Task
 
 ```bash
-curl -X DELETE  http://<your_endpoint>/api/v1/todos/6cf009f9-f35e-46d6-9be2-ffe6f0dde4ba
+curl -X DELETE  $(gp url 8080)/api/v1/todos/<your_id>
 ```
 
-- Create a Task
+- Delete all features with **deleteAll**
 
 ```bash
-curl -X POST http://<your_endpoint>/api/v1/todos/ \
-	 -H "Content-Type: application/json" \
-     -d "{\"title\":\"Sample Task\"}"
+curl -X DELETE $(gp url 8080)/api/v1/todos/
 ```
+
+## 3. Test your Controller
+
+✅ **Step 2a:** Run the test specifications to validate your implementation [https://www.todobackend.com/specs/index.html](https://www.todobackend.com/specs/index.html) providing the URL of your endpoint.
+
+```
+gp preview https://www.todobackend.com/specs/index.html?$(gp url 8080)/api/v1/todos/
+```
+
+✅ **Step 2b:** Play with your implementation [https://www.todobackend.com/client/index.html](https://www.todobackend.com/client/index.html) providing the URL of your endpoint.
+
+```
+gp preview https://www.todobackend.com/client/index.html?$(gp url 8080)/api/v1/todos/
+```
+
+![.](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/raw/PART2/images/gitpod-preview.png?raw=true)
 
 --- 
 
 Let's implements a real backend now
 
 ```bash
-git checkout PART3
+git fetch --all
+git reset --hard origin/PART3
+git checkout PART3 
 ```

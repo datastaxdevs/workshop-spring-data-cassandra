@@ -7,6 +7,6 @@ ${AnsiColor.BLUE}         \/     \/             \/       \/     \/     \/       
 
 ${AnsiColor.CYAN} Implement a todoList with Spring Data Cassandra and Spring Boot
 
-${AnsiColor.BLACK} You are using BRANCH STEP2
+${AnsiColor.CYAN} You are using BRANCH STEP2
 ${AnsiColor.GREEN} The application will start at ${AnsiColor.RED}http://localhost:8080${AnsiColor.BLACK}
  
