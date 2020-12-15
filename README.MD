@@ -1,12 +1,12 @@
 # PART5
 
-To expose the REST API from the repository we could have use Spring Data REST but here the specification was quite precise.
+To expose the REST API from the repository we could have used Spring Data REST but here the specification was quite precise.
 
-To avoid using 2 beans `Todo` and `TodoEntity` with one only adding an URL we could have use Spring HateOAS and use `Resource`.
+To avoid using 2 beans `Todo` and `TodoEntity` with one only adding an URL we could have used Spring HateOAS and used `Resource`.
 
-To test instead of simple CURL we want to generate a small web client. No work on you side here we will do it for you.
+To test instead of simple CURL we want to generate a small web client. Don't worry there is no work on you side as we will do it for you.
 
-We are using a community project [SpringDoc](https://springdoc.org/). The OpenAPI is an evolution of Swagger2 and this is why it started at version 3.
+We are using a community project [SpringDoc](https://springdoc.org/).  OpenAPI is an evolution of Swagger2 and this is why it started at version 3.
 
 First we need a a new dependency in the `pom.xml`
 ```xml
@@ -81,7 +81,7 @@ public class OpenApiDocumentationConfig implements WebMvcConfigurer {
 }
 ```
 
-We can also change `HelloWorld` in a way to route to the documentation when we start the application:
+We should also change `HelloWorld` in a way that it can route to the documentation when we start the application:
 
 ```java
 package com.datastax.workshop.hello;
@@ -107,7 +107,7 @@ public class HelloWorldRestController {
 }
 ```
 
-Finally, and more important, you define annotations in your controller
+Finally, and more importantly, you define annotations in your controller
 
 **BEFORE**
 ```java
@@ -155,11 +155,11 @@ throws URISyntaxException {
 }
 ```
 
-Yeah more code in the annotation that the real code, really.
+There is more code in the annotation that the real code, really.
 
 ![.](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/raw/PART4/images/openapi.png?raw=true)
 
-To see all the class and the  final product simply move to branch `ZEND`
+To see all the class and the final product simply move to branch `ZEND`
 
 ```bash
 git fetch --all
