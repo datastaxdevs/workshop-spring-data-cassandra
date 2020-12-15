@@ -60,22 +60,18 @@ Our mission withing the next hour is to implement the *backend API* and store  d
 
 **✅ How to create a Skeleton** 
 
-[Start.spring.io](start.spring.io) routes you to the Spring Initializr which helps you create projects from scratch.
+[Start.spring.io](http://start.spring.io) routes you to the Spring Initializr which helps you create projects from scratch.
 
-Let's fill what we need for today as the picture. 
-
-But we are lazy and click [THIS LINK](https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.4.1.RELEASE&packaging=jar&jvmVersion=11&groupId=com.datastax.workshop&artifactId=todobackend-springdata&name=todobackend-springdata&description=TodoBackend%20Spring%20Boot%20Microservices%20with%20Spring%20Data%20for%20Apache%20Cassandra&packageName=com.datastax.workshop&dependencies=data-cassandra,devtools,web,lombok,actuator)
+Fill the different fields as shown in the picture below. As we are lazy click [THIS LINK](https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.4.1.RELEASE&packaging=jar&jvmVersion=11&groupId=com.datastax.workshop&artifactId=todobackend-springdata&name=todobackend-springdata&description=TodoBackend%20Spring%20Boot%20Microservices%20with%20Spring%20Data%20for%20Apache%20Cassandra&packageName=com.datastax.workshop&dependencies=data-cassandra,devtools,web,lombok,actuator)
  to have everything populated already.
 
 ![TodoBackendClient](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/spring-initializr.png?raw=true)
 
-Now simply click button **GENERATE** to download the ZIP if you want.
-
-Guess what ? this is the initial content of this repository (MASTER) so you have nothing to do here, by moving from branches to branches we will build the full application.
+Now simply you could simply click button **GENERATE** to download the ZIP but guess what the repository where you are (branch PART1) content exactly this content to avoid you import all this.
 
 ## 3. Start your Spring-Boot Application 
 
-**✅ Step 3b. Start Your application** : Use this  maven command or run application in your IDE
+**✅ Step 3b. Start Your application** : Make sure you are in proper folder and use this maven command to start the application.
 
 ```bash
 cd todobackend-springdata/
@@ -88,21 +84,26 @@ mvn clean install spring-boot:run
 Caused by: com.datastax.oss.driver.api.core.AllNodesFailedException: Could not reach any contact point, make sure you've provided valid addresses (showing first 1 nodes, use getAllErrors() for more): Node(endPoint=/127.0.0.1:9042, hostId=null, hashCode=17e0c2f0): [com.datastax.oss.driver.api.core.connection.ConnectionInitException: [s0|control|connecting...] Protocol initialization request, step 1 (OPTIONS): failed to send request (io.netty.channel.StacklessClosedChannelException)]
 ```
 
-For those who read:
+For those who read the text:
 ```diff
 - You will get an ERROR, THIS IS EXPECTED
 ```
 
-Adding some dependency for Spring Data Cassandra now create beans to connect to Cassandra but as of now we don;t have any backend. It will come soon but for now let's add a couple of lines
+With dependencies introduced by Spring Data Cassandra, Spring Boot now wants to create beans to connect to Cassandra but, as of now we don't have any backend. It will come soon but for now let's add a couple of lines in the main class in order to remove autoconfigurations> we use proper exclude clauses in annotation `SpringBootApplication` in class `TodobackendSpringdataApplication`.
 
-Remove autoconfigurations with proper exclude clauses in annotation `SpringBootApplication` in class `TodobackendSpringdataApplication`.
+Edit the `SpringBootApplication` and add the following exclude statements.
 
 ```java
-@SpringBootApplication(exclude = { CassandraDataAutoConfiguration.class, CassandraAutoConfiguration.class })
-```
+import org.springframework.boot.autoconfigure.cassandra.CassandraAutoConfiguration;
+import org.springframework.boot.autoconfigure.data.cassandra.CassandraDataAutoConfiguration;
 
-You can also create a new file to have a small hello world sample to see all :
-You should be able to start the application now.
+
+@SpringBootApplication(exclude = { 
+    CassandraDataAutoConfiguration.class, 
+    CassandraAutoConfiguration.class 
+})
+```
+You should be able to start the application now and the port 8080 will be open.
 
 ```bash
 mvn clean install spring-boot:run
@@ -139,7 +140,34 @@ mvn clean install spring-boot:run
 2020-12-13 17:32:12.020  INFO 6029 --- [  restartedMain] c.d.w.TodobackendSpringdataApplication   : Started TodobackendSpringdataApplication in 1.862 seconds (JVM running for 2.264)
 ```
 
-This is it for part 1. To move to part 2 checkout branch `STEP2`
+![TodoBackendClient](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/gitpod-empty.png?raw=true)
+
+Pretty sad to have an error page because we do not have any controller yet, let's create some `HelloWorldRestController` in a new package `hello`:
+
+```java
+package com.datastax.workshop.hello;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class HelloWorldRestController {
+    @RequestMapping("/")
+    public String hello() {
+        return "Hello World !";
+    }
+}
+```
+
+Stop and restart the application with CRTL+C.
+
+![TodoBackendClient](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/gitpod-hello.png?raw=true)
+
+Much better. Stop the application with CRTL+C
+
+
+This is it for part 1. To move to part 2 checkout branch 
+`STEP2`
 
 ```bash
 git checkout PART2
