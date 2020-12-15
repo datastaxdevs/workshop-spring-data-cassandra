@@ -174,7 +174,9 @@ To move to part 2 checkout branch
 > Moving to PART2 You will loose your local changes as we enforce with `-f`. As an alternative you can also fork the repository, work with your copy, then you would be able to commit before moving to part2.
 
 ```bash
-git checkout -f -b PART2
+git fetch --all
+git reset --hard origin/PART2
+git checkout PART2 
 ```
 
 ![TodoBackendClient](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/welldone.jpg?raw=true)
