@@ -10,11 +10,11 @@
 
 ## 1. Object Mapping
 
-We can interact with Cassandra using the Cassandra Query Language (or CQL) but here we want some mapping between Object and Table.
+We can interact with Cassandra using the Cassandra Query Language (or CQL) but here we want some mapping between an Object and the Table.
 
-In previous step we created an entity `TodoEntity` not dealing with the resource URL and defining the columns we needed.
+In previous step we created an entity `TodoEntity` while not dealing with the resource URL or defining the columns we needed.
 
-Let's annotate the bean in a way we define more `PrimaryKey` and fields
+Let's annotate the bean in such a way so that we can define more `PrimaryKey` definitions and table fields
 
 ```java
 package com.datastax.workshop.todo;
@@ -68,7 +68,7 @@ public class TodoEntity {
 
 There are 2 ways to create a repository. 
 
-- You can either do 100% with an interface extending `CassandraRepository<E, K>`. Create a new file `CassandraRepository.java` in the todo folder. Use Gitpod to help you with the imports.
+- You can either do it all with an interface extending `CassandraRepository<E, K>`. Create a new file `CassandraRepository.java` in the todo folder. Use Gitpod to help you with the imports.
 
 ```java
 @Repository
@@ -76,7 +76,7 @@ public interface TodoRepositoryCassandra
   extends CassandraRepository<TodoEntity, UUID> {}
 ```
 
-- You can go with the implementation `SimpleCassandraRepository<E, K>` which allows us to access the `CqlSession` and `CqlTemplate` to do custom queries later.
+- Or you can go with the implementation `SimpleCassandraRepository<E, K>` which allows us to access the `CqlSession` and `CqlTemplate` to do custom queries later.
 
 ```java
 
@@ -106,7 +106,7 @@ public class TodoRepositorySimpleCassandra
 
 ## 3. Unit Test of the repository
 
-We now want to leverage on Spring-boot to initiate the context for us and inject the implementation. We can sinply do: check that this unit test is passing.
+We now want to leverage on Spring-boot to initiate the context for us and inject the implementation. We can sinply use the following code (Note check that this unit test is passing):  
 
 ```java
 @SpringBootTest
@@ -149,7 +149,7 @@ mvn test -Dtest=com.datastax.workshop.TodobackendSpringdataApplicationTests#shou
 [INFO] ------------------------------------------------------------------------
 ```
 
-You can again access the `CQL Console` on astra and perform the CQL:
+You can now access the `CQL Console` on astra again and perform the following CQL command:
 
 ```sql
 select * from todokeyspace.todos
@@ -159,7 +159,7 @@ select * from todokeyspace.todos
 
 ## 4. Plug Repository to the RestController
 
-Adapt Rest Controller to have the specs passing with the Cassandra Repository. Here are some snippet
+Adapt the REST controller to let the specs pass with the Cassandra Repository. Here is a snippet
 
 ```java
 // Import, class definition
@@ -202,7 +202,7 @@ Let's execute the unit test
 gp preview https://www.todobackend.com/specs/index.html?$(gp url 8080)/api/v1/todos/
 ```
 
-You can again check in Cassandra DB:
+Check the Cassandra DB:
 
 ```sql
 select * from todokeyspace.todos;
@@ -210,7 +210,7 @@ select * from todokeyspace.todos;
 
 ![.](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/raw/PART4/images/astra-cqlconsole-select-2.png?raw=true)
 
-You have now a working application plug to Cassandra:
+You now have a working application that can plug into Cassandra:
 ```
 gp preview https://www.todobackend.com/client/index.html?$(gp url 8080)/api/v1/todos/
 ```
