@@ -140,7 +140,7 @@ mvn clean install spring-boot:run
 2020-12-13 17:32:12.020  INFO 6029 --- [  restartedMain] c.d.w.TodobackendSpringdataApplication   : Started TodobackendSpringdataApplication in 1.862 seconds (JVM running for 2.264)
 ```
 
-![TodoBackendClient](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/gitpod-empty.png?raw=true)
+![TodoBackendClient](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/PART1/images/gitpod-empty.png?raw=true)
 
 Pretty sad to have an error page because we do not have any controller yet, let's create some `HelloWorldRestController` in a new package `hello`:
 
@@ -161,7 +161,7 @@ public class HelloWorldRestController {
 
 Stop and restart the application with CRTL+C.
 
-![TodoBackendClient](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/gitpod-hello.png?raw=true)
+![TodoBackendClient](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/PART1/images/gitpod-hello.png?raw=true)
 
 Much better. Stop the application with CRTL+C
 
