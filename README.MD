@@ -128,23 +128,49 @@ class TodobackendSpringdataApplicationTests {
 }
 ```
 
+Execute the test with the following command:
+```bash
+mvn test -Dtest=com.datastax.workshop.TodobackendSpringdataApplicationTests#shoud_save_task_when_save
+```
+
+```
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.95 s - in com.datastax.workshop.TodobackendSpringdataApplicationTests
+14:22:39.125 WARN  org.springframework.beans.factory.support.DisposableBeanAdapter : Destroy method 'close' on bean with name 'cassandraDriverConfigLoader' threw an exception: java.util.concurrent.RejectedExecutionException: event executor terminated
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  11.817 s
+[INFO] Finished at: 2020-12-15T14:22:39Z
+[INFO] ------------------------------------------------------------------------
+```
+
 You can again access the `CQL Console` on astra and perform the CQL:
 
 ```sql
 select * from todokeyspace.todos
 ```
 
+![.](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/raw/PART4/images/astra-cqlconsole-select.png?raw=true)
 
 ## 4. Plug Repository to the RestController
 
 Adapt Rest Controller to have the specs passing with the Cassandra Repository. Here are some snippet
 
 ```java
-private TodoRepositoryCassandra repo;
-// You want to inject with the constructor
-public TodoRestController(TodoRepositoryCassandra todoRepo) {
-  this.repo = todoRepo;
-}
+// Import, class definition
+//[..]
+
+ private TodoRepositoryCassandra repo;
+
+ // You want to inject with the constructor
+ public TodoRestController(TodoRepositoryCassandra todoRepo) {
+   this.repo = todoRepo;
+ }
 
 @GetMapping("/{uid}")
 public ResponseEntity<Todo> findById(
@@ -162,11 +188,38 @@ public ResponseEntity<Todo> findById(
 // Your JOB...
 
 ```
+<details><summary><i>🖱️ Click me to show correction</i></summary><br/><a href="https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/PART5/todobackend-springdata/src/main/java/com/datastax/workshop/todo/Todo.java"><li>Todo.java</a><a href="https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/PART5/todobackend-springdata/src/main/java/com/datastax/workshop/todo/TodoEntity.java"><li>TodoEntity.java</a><br/><a href="https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/PART5/todobackend-springdata/src/main/java/com/datastax/workshop/todo/TodoRestController.java"><li>TodoRestController.java</a><br/></details>
+
+
+Your Application is now connected to Cassandra. Let's start it:
+
+```
+mvn clean spring-boot:run
+```
+
+Let's execute the unit test
+```
+gp preview https://www.todobackend.com/specs/index.html?$(gp url 8080)/api/v1/todos/
+```
+
+You can again check in Cassandra DB:
+
+```sql
+select * from todokeyspace.todos;
+```
+
+![.](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/raw/PART4/images/astra-cqlconsole-select-2.png?raw=true)
+
+You have now a working application plug to Cassandra:
+```
+gp preview https://www.todobackend.com/client/index.html?$(gp url 8080)/api/v1/todos/
+```
 
 --- 
-
-To have the working application move to STEP5
+To have the working application. To see the solution move to PART5
 
 ```bash
-git checkout PART5
+git fetch --all
+git reset --hard origin/PART5
+git checkout PART5 
 ```
