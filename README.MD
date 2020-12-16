@@ -164,7 +164,7 @@ mvn test -Dtest=com.datastax.workshop.TodobackendSpringdataApplicationTests#shou
 You can now access the `CQL Console` on astra again and perform the following CQL command:
 
 ```sql
-select * from todokeyspace.todos
+select * from todokeyspace.todos;
 ```
 
 ![.](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/raw/PART4/images/astra-cqlconsole-select.png?raw=true)
