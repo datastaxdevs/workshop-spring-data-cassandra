@@ -66,9 +66,9 @@ public class TodoEntity {
 
 ## 2. Create a Spring Data Repository
 
-There are 2 ways to create a repository. 
+There are at least 2 ways to create a repository. 
 
-- You can either do it all with an interface extending `CassandraRepository<E, K>`. Create a new file `CassandraRepository.java` in the todo folder. Use Gitpod to help you with the imports.
+- You can either do it all with an interface extending `CassandraRepository<E, K>`. Create a new file `TodoRepositoryCassandra.java` in the todo folder. Use Gitpod to help you with the imports.
 
 ```java
 @Repository
@@ -76,7 +76,7 @@ public interface TodoRepositoryCassandra
   extends CassandraRepository<TodoEntity, UUID> {}
 ```
 
-- Or you can go with the implementation `SimpleCassandraRepository<E, K>` which allows us to access the `CqlSession` and `CqlTemplate` to do custom queries later.
+- **OR** you can go with the implementation `TodoRepositorySimpleCassandra<E, K>` which allows us to access the `CqlSession` and `CqlTemplate` to do custom queries later.
 
 ```java
 
@@ -106,9 +106,21 @@ public class TodoRepositorySimpleCassandra
 
 ## 3. Unit Test of the repository
 
-We now want to leverage on Spring-boot to initiate the context for us and inject the implementation. We can sinply use the following code (Note check that this unit test is passing):  
+We now want to leverage on Spring-boot to initiate the context for us and inject the implementation. We can simply use the following code (Note check that this unit test is passing): 
+
+Copy the code below to replace existing `TodobackendSpringdataApplicationTests` class.
 
 ```java
+package com.datastax.workshop;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.datastax.workshop.todo.TodoEntity;
+import com.datastax.workshop.todo.TodoRepositoryCassandra;
+
 @SpringBootTest
 class TodobackendSpringdataApplicationTests {
 
