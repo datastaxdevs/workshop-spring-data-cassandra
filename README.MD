@@ -33,7 +33,7 @@ Make sure to chose a password with minimum 8 characters, containing an upper and
 
 Below you will find the values to enter for each field.
 
-![my-pic](https://github.com/DataStax-Academy/battlestax/blob/master/tutorial/creatastra-2.png?raw=true)
+![.](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/raw/PART3/images/create-astra-2.png?raw=true)
 
 - **Fill in the database name** - `myfreetierdb` While Astra allows you to fill in these fields with values of your own choosing, please follow our reccomendations to make the rest of the exercises easier to follow. If you don't, you are on your own! :)
 
