@@ -218,14 +218,16 @@ public class SpringDataConfig {
 }
 ```
 
-You can now remove the excludes we added before
+You can now remove the excludes we added before in class `TodobackendSpringdataApplication`
 
 ```java
+
+//@SpringBootApplication(exclude = { CassandraDataAutoConfiguration.class, CassandraAutoConfiguration.class })
 @SpringBootApplication
-public class SpringDataTestApplication {
+public class TodobackendSpringdataApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringDataTestApplication.class, args);
+		SpringApplication.run(TodobackendSpringdataApplication.class, args);
 	}
 
 }
@@ -258,6 +260,9 @@ The application should now work as well.
 ```bash
 mvn spring-boot:run
 ```
+
+<details><summary><i>🖱️ Click me to show correction</i></summary><br/><a href="https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/PART4/todobackend-springdata/src/main/java/com/datastax/workshop/conf/SpringDataConfig.java"><li>SpringDataConfig.java</a><br/><a href="https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/PART4/todobackend-springdata/src/main/java/com/datastax/workshop/TodobackendSpringdataApplication.java"><li>TodobackendSpringdataApplication.java</a><br/></details>
+<br/>
 
 Open the preview with, your app is now connected to Cassandra
 ```
