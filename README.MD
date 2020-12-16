@@ -13,7 +13,7 @@ First we need a a new dependency in the `pom.xml`
 	<dependency>
 		<groupId>org.springdoc</groupId>
 		<artifactId>springdoc-openapi-ui</artifactId>
-	  <version1.5.1</version>
+	  <version>1.5.1</version>
 	</dependency>
 ``` 
 
@@ -157,7 +157,7 @@ throws URISyntaxException {
 
 There is more code in the annotation that the real code, really.
 
-![.](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/raw/PART4/images/openapi.png?raw=true)
+![.](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/raw/PART5/images/openapi.png?raw=true)
 
 To see all the class and the final product simply move to branch `ZEND`
 
