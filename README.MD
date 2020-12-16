@@ -52,9 +52,9 @@ gp url 8080
 
 To move to branch `PART1`, in a terminal use the following command. 
 
-- You should read the instructions in gitpod now as moving to the enxt branch will update this READ ME with the new instructions.
+- You should read the instructions in gitpod now as moving to the next branch will update this README with the new instructions.
 
-- When you move from one branch to another with the checkout you will have the workspace populated with the solution. You local changes will be lost.
+- When you move from one branch to another using checkout you will have the workspace populated with the solution. Your local changes will be lost.
 
 
 ```bash
