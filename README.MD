@@ -9,8 +9,13 @@
 
 ## 1. Create a CRUD Controller
 
-When checking the specification the ouput json should look like
-Reminder: [https://todo-back-springboot220-java12.herokuapp.com/todos](https://todo-back-springboot220-java12.herokuapp.com/todos)
+List todos once again:
+
+```
+gp preview https://todo-back-springboot220-java12.herokuapp.com/todos
+```
+
+When checking the specification the ouput json should look like:
 
 ```json
 {
@@ -136,8 +141,12 @@ String reqUrl = req.getRequestURL().toString();
 ```
 
 <details><summary><i>🖱️ Click me to show correction</i></summary><br/><a href="https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/PART3/todobackend-springdata/src/main/java/com/datastax/workshop/todo/Todo.java"><li>Todo.java</a><br/><a href="https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/PART3/todobackend-springdata/src/main/java/com/datastax/workshop/todo/TodoRestController.java"><li>TodoRestController.java</a><br/></details>
+<br/>
+
+✅ **Step 1c:Start the application**
 
 You can now start the application with the command
+
 ```bash
 mvn clean spring-boot:run
 ```
@@ -148,13 +157,13 @@ You now have a new endpoint, simply use in the terminal to open this as a previe
 gp preview $(gp url 8080)/api/v1/todos/
 ```
 
+**👁️ Expected output**
+
 ![.](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/raw/PART2/images/gitpod-preview-0.png?raw=true)
 
 ## 2. Sample Curl commands
 
 You can access to the CRUD operations with the following CURL in a new terminal.
-
-You can use either the `CRUD` command line or [https://reqbin.com/curl](https://reqbin.com/curl). Each time you will need to change the base url.
 
 - Create a Task
 
@@ -164,19 +173,19 @@ curl -X POST $(gp url 8080)/api/v1/todos/ \
    -d "{\"title\":\"Sample Task\"}"
 ```
 
-- List all features with **findAll**
+- **List all** Todos with **findAll**
 
 ```bash
 curl $(gp url 8080)/api/v1/todos/
 ```
 
-- Read a Task
+- **Read** a Todo from its id
 
 ```bash
 curl $(gp url 8080)/api/v1/todos/<your_id>
 ```
 
-- delete a Task
+- **delete** a Task
 
 ```bash
 curl -X DELETE  $(gp url 8080)/api/v1/todos/<your_id>
@@ -190,13 +199,16 @@ curl -X DELETE $(gp url 8080)/api/v1/todos/
 
 ## 3. Test your Controller
 
-✅ **Step 2a:** Run the test specifications to validate your implementation [https://www.todobackend.com/specs/index.html](https://www.todobackend.com/specs/index.html) providing the URL of your endpoint.
+✅ **Step 2a:** Run the test [specifications](https://www.todobackend.com/specs/index.html) to validate your implementation providing the URL of your endpoint. Use this command in the terminal
 
 ```
 gp preview https://www.todobackend.com/specs/index.html?$(gp url 8080)/api/v1/todos/
 ```
 
+**👁️ Expected output**
+
 ![.](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/raw/PART2/images/gitpod-preview.png?raw=true)
+
 
 ✅ **Step 2b:** Play with your implementation [https://www.todobackend.com/client/index.html](https://www.todobackend.com/client/index.html) using the URL of your endpoint.
 
@@ -206,7 +218,7 @@ gp preview https://www.todobackend.com/client/index.html?$(gp url 8080)/api/v1/t
 
 ![.](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/raw/PART2/images/gitpod-preview-2.png?raw=true)
 
---- 
+---
 
 Let's implements a real backend now
 
