@@ -24,17 +24,34 @@ For simplicity all exercise instructions are listed in a single `README.MD` docu
 ![TodoBackend](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/todobackend.png?raw=true)
 
 There are multiple free implementations available. Some implementations provide endpoints to be tested in `heroku`. [Heroku provide free hosting for a Java application but this is on-demand](https://devcenter.heroku.com/articles/deploying-spring-boot-apps-to-heroku). With `Heroku` The application will be incative until you access the endpoint. Due to this it will take 30s for the first person hitting the endpoint to wake up the application. Among the available free endpoints we can list:
-- `#1` : [https://todo-back-springboot220-java12.herokuapp.com/todos](https://todo-back-springboot220-java12.herokuapp.com/todos)
+- `#1` : [https://todo-back-springboot220-java12.herokuapp.com/todos](https://todo-back-springboot220-java12.herokuapp.com/todo)
 - `#2` : [https://todo-quarkus.herokuapp.com/todos](https://todo-quarkus.herokuapp.com/todos)
 - `#3` : [https://todo-backend-micronaut.herokuapp.com/todos](https://todo-backend-micronaut.herokuapp.com/todos)
 
 **✅ Step 2b. Test TodoBackEnd Spec Runner** : Locate the [spec runner](https://www.todobackend.com/specs/index.html) and use one of the `endpoints` listed above to evaluate if API matchs the requirements. To do so copy-paste one URL and click `Run Tests`.
 
+
 ![TodoBackendTest](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/todobackend-runtest.png?raw=true)
 
+**Pick on one the 3:**
+
 - Link to [`SpecRunner#1`](https://www.todobackend.com/specs/index.html?https://todo-back-springboot220-java12.herokuapp.com/todos)
+
+```
+gp preview https://www.todobackend.com/specs/index.html?https://todo-back-springboot220-java12.herokuapp.com/todos
+```
+
 - Link to [`SpecRunner#2`](https://www.todobackend.com/specs/index.html?https://todo-quarkus.herokuapp.com/todos)
+
+```
+gp preview https://www.todobackend.com/specs/index.html?https://todo-quarkus.herokuapp.com/todos
+```
+
 - Link to [`SpecRunner#3`](https://www.todobackend.com/specs/index.html?https://todo-backend-micronaut.herokuapp.com/todos)
+
+```
+gp preview https://www.todobackend.com/specs/index.html?https://todo-backend-micronaut.herokuapp.com/todos
+```
 
 **👁️ Expected output**
 
@@ -46,9 +63,25 @@ There are multiple free implementations available. Some implementations provide 
 
 ![TodoBackendClient](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/todobackend-runclient.png?raw=true)
 
+** Pick on of the 3:**
+
 - Link to [`WebClient#1`](https://www.todobackend.com/client/index.html?https://todo-back-springboot220-java12.herokuapp.com/todos)
+
+```
+gp preview https://www.todobackend.com/client/index.html?https://todo-back-springboot220-java12.herokuapp.com/todos
+```
+
 - Link to [`WebClient#2`](https://www.todobackend.com/client/index.html?https://todo-quarkus.herokuapp.com/todos)
+
+```
+gp preview https://www.todobackend.com/client/index.html?https://todo-quarkus.herokuapp.com/todos
+```
+
 - Link to [`WebClient#3`](https://www.todobackend.com/client/index.html?https://todo-backend-micronaut.herokuapp.com/todos)
+
+```
+gp preview https://www.todobackend.com/client/index.html?https://todo-backend-micronaut.herokuapp.com/todos
+```
 
 **👁️ Expected output**
 
@@ -91,7 +124,7 @@ For those who read the text:
 
 With dependencies introduced by Spring Data Cassandra, Spring Boot now wants to create beans to connect to Cassandra but, as of now we don't have any backend. We will fix it soon but for now let's add a couple of lines in the main class.  In order to remove  autoconfigurations>  we use proper exclude clauses in the annotation `SpringBootApplication` in class `TodobackendSpringdataApplication`.
 
-Edit the `SpringBootApplication` and add the following exclude statements.
+Edit the `SpringBootApplication` annotation and add the following **exclude** statements. 
 
 ```java
 import org.springframework.boot.autoconfigure.cassandra.CassandraAutoConfiguration;
