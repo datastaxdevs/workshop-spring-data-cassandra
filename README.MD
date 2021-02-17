@@ -9,7 +9,7 @@
 
 ## 1. Create a CRUD Controller
 
-List todos once again:
+✅ **Step 1a:** Open the preview with an existing API 
 
 ```
 gp preview https://todo-back-springboot220-java12.herokuapp.com/todos
@@ -19,15 +19,15 @@ When checking the specification the ouput json should look like:
 
 ```json
 {
-  url: "http://localhost:8080/api/v1/todos/415fa735-d432-4dda-8558-db6cfddea03a",
-  uuid: "415fa735-d432-4dda-8558-db6cfddea03a",
-  title: "blah",
-  completed: false,
-  order: 95
+  "url": "http://localhost:8080/api/v1/todos/415fa735-d432-4dda-8558-db6cfddea03a",
+  "uuid": "415fa735-d432-4dda-8558-db6cfddea03a",
+  "title": "blah",
+  "completed": false,
+  "order": 95
 }
 ```
 
-✅ **Step 1a:** Create a `Todo.java` file in a new package `todo`. The `URL` attribute is brought by the specification in an HateOAS approach, links to each resource is explicit
+✅ **Step 1b:** Create a file `Todo.java` in a new package `todo`. The `URL` attribute is brought by the specification (HateOAS approach), links to each resource is explicit.
 
 ```java
 package com.datastax.workshop.todo;
@@ -44,7 +44,7 @@ public class Todo {
 }
 ```
 
-✅ **Step 1b:** Create the `TodoRestController.java` file in the same folder. Complete the REST Controller uing an in-memory data structure of your choice to match the specification.
+✅ **Step 1c:** Create the `TodoRestController.java` file in the same folder.
 
 ```java
 package com.datastax.workshop.todo;
@@ -76,7 +76,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 
 @RestController
 @CrossOrigin(
@@ -134,16 +133,26 @@ public class TodoRestController {
 }
 ```
 
-You don't have to complete everything in the 10min but try the first methods. Tips to get the URL of a current `HttpServletRequest` req, you can run:
+✅ **Step 1d:Start the application**
 
-```java
+Complete the REST Controller uing an `in-memory` data structure of your choice to match the specification.
+You don't have to complete everything in the 10min but try the first methods. 
+
+```
+ℹ️ Tips: 
+----------
+
+(1) An easy data structure is 
+Map<UUID, Todo> todoStore = new ConcurrentHashMap<>();
+
+(2) To get the URL of a `HttpServletRequest` reques, you can run :
 String reqUrl = req.getRequestURL().toString();
 ```
 
 <details><summary><i>🖱️ Click me to show correction</i></summary><br/><a href="https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/PART3/todobackend-springdata/src/main/java/com/datastax/workshop/todo/Todo.java"><li>Todo.java</a><br/><a href="https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/PART3/todobackend-springdata/src/main/java/com/datastax/workshop/todo/TodoRestController.java"><li>TodoRestController.java</a><br/></details>
 <br/>
 
-✅ **Step 1c:Start the application**
+✅ **Step 1e:Start the application**
 
 You can now start the application with the command
 
@@ -165,7 +174,7 @@ gp preview $(gp url 8080)/api/v1/todos/
 
 You can access to the CRUD operations with the following CURL in a new terminal.
 
-- Create a Task
+- ✅ Step 2a: Create a Task
 
 ```bash
 curl -X POST $(gp url 8080)/api/v1/todos/ \
@@ -173,25 +182,25 @@ curl -X POST $(gp url 8080)/api/v1/todos/ \
    -d "{\"title\":\"Sample Task\"}"
 ```
 
-- **List all** Todos with **findAll**
+- ✅ Step 2b: **List all** Todos with **findAll**
 
 ```bash
 curl $(gp url 8080)/api/v1/todos/
 ```
 
-- **Read** a Todo from its id
+- ✅ Step 2c: **Read** a Todo from its id
 
 ```bash
 curl $(gp url 8080)/api/v1/todos/<your_id>
 ```
 
-- **delete** a Task
+- ✅ Step 2d: **delete** a Task
 
 ```bash
 curl -X DELETE  $(gp url 8080)/api/v1/todos/<your_id>
 ```
 
-- Delete all features with **deleteAll**
+- ✅ Step 2e: Delete all features with **deleteAll**
 
 ```bash
 curl -X DELETE $(gp url 8080)/api/v1/todos/
@@ -199,7 +208,7 @@ curl -X DELETE $(gp url 8080)/api/v1/todos/
 
 ## 3. Test your Controller
 
-✅ **Step 2a:** Run the test [specifications](https://www.todobackend.com/specs/index.html) to validate your implementation providing the URL of your endpoint. Use this command in the terminal
+✅ **Step 3a:** Run the test [specifications](https://www.todobackend.com/specs/index.html) to validate your implementation providing the URL of your endpoint. Use this command in the terminal
 
 ```
 gp preview https://www.todobackend.com/specs/index.html?$(gp url 8080)/api/v1/todos/
@@ -210,7 +219,7 @@ gp preview https://www.todobackend.com/specs/index.html?$(gp url 8080)/api/v1/to
 ![.](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/raw/PART2/images/gitpod-preview.png?raw=true)
 
 
-✅ **Step 2b:** Play with your implementation [https://www.todobackend.com/client/index.html](https://www.todobackend.com/client/index.html) using the URL of your endpoint.
+✅ **Step 3b:** Play with your implementation [https://www.todobackend.com/client/index.html](https://www.todobackend.com/client/index.html) using the URL of your endpoint.
 
 ```
 gp preview https://www.todobackend.com/client/index.html?$(gp url 8080)/api/v1/todos/
