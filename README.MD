@@ -140,7 +140,7 @@ import org.springframework.boot.autoconfigure.data.cassandra.CassandraDataAutoCo
     CassandraAutoConfiguration.class 
 })
 ```
-You should now be able to start the application and port 8080 open automatically.
+You should now be able to start the application.
 
 ```bash
 mvn clean install spring-boot:run
@@ -177,12 +177,20 @@ mvn clean install spring-boot:run
 2020-12-13 17:32:12.020  INFO 6029 --- [  restartedMain] c.d.w.TodobackendSpringdataApplication   : Started TodobackendSpringdataApplication in 1.862 seconds (JVM running for 2.264)
 ```
 
+If the preview is not automatically refresh open the application with the following command:
+
+```
+gp preview $(gp url 8080)
+```
+
+**👁️ Expected output**
+
 ![TodoBackendClient](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/PART1/images/gitpod-empty.png?raw=true)
 
 
 **✅ Step 3c. Create your hello world endpoint**
 
-Pretty sad to have an error page when we do not have any controller, let's create one `HelloWorldRestController` in a new package `hello`:
+Pretty sad to have an error page becaise we do not have any controller, let's create one `HelloWorldRestController` in a new package `hello`:
 
 ```java
 package com.datastax.workshop.hello;
@@ -199,7 +207,7 @@ public class HelloWorldRestController {
 }
 ```
 
-Stop and restart the application with CRTL+C.
+Stop with CRTL+C and restart with `mvn clean install spring-boot:run`
 
 ![TodoBackendClient](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/PART1/images/gitpod-hello.png?raw=true)
 
