@@ -19,7 +19,7 @@ For simplicity all exercise instructions are listed in a single `README.MD` docu
 **✅ Step 1a. Visit [TodoMVC.com](http://todomvc.com/) to discover what we are building today** : We want you to see what it looks like before starting anything. So please browse to [http://todomvc.com/](http://todomvc.com/) and take a look. You will see that there are multiple implementations, feel free to pick one of those and test it live in your browser.
 
 
-**Todo-Backend** is an example to showcase backend tech stacks. The Todo-Backend project defines a simple web API spec for managing a todo list. Contributors implement that spec using various tech stacks. Those implementations are cataloged below. A spec runner verifies that each contribution implements the exact same API, by running an automated test suite which defines the API.
+**[Todo-Backend](https://www.todobackend.com/)** is an example to showcase backend tech stacks. The Todo-Backend project defines a simple web API spec for managing a todo list. Contributors implement that spec using various tech stacks. Those implementations are cataloged below. A spec runner verifies that each contribution implements the exact same API, by running an automated test suite which defines the API.
 
 ![TodoBackend](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/todobackend.png?raw=true)
 
@@ -28,12 +28,11 @@ There are multiple free implementations available. Some implementations provide 
 - `#2` : [https://todo-quarkus.herokuapp.com/todos](https://todo-quarkus.herokuapp.com/todos)
 - `#3` : [https://todo-backend-micronaut.herokuapp.com/todos](https://todo-backend-micronaut.herokuapp.com/todos)
 
-**✅ Step 2b. Test TodoBackEnd Spec Runner** : Locate the [spec runner](https://www.todobackend.com/specs/index.html) and use one of the `endpoints` listed above to evaluate if API matchs the requirements. To do so copy-paste one URL and click `Run Tests`.
-
+**✅ Step 1b. Test TodoBackEnd Spec Runner** : Locate the [spec runner](https://www.todobackend.com/specs/index.html) and use one of the `endpoints` listed above to evaluate if API matchs the requirements. To do so copy-paste one URL and click `Run Tests`.
 
 ![TodoBackendTest](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/todobackend-runtest.png?raw=true)
 
-**Pick on one the 3:**
+**Pick one in the 3:**
 
 - Link to [`SpecRunner#1`](https://www.todobackend.com/specs/index.html?https://todo-back-springboot220-java12.herokuapp.com/todos)
 
@@ -59,7 +58,7 @@ gp preview https://www.todobackend.com/specs/index.html?https://todo-backend-mic
 
 **Note:** *During the live stream there will be dozens of people testing the same endpoints.  It is possible that we could hit some slowness or issues with race conditions.*
 
-**✅ Step 2c. Test TodoBackEnd Web Client** : todoBackend.com provides a [client](https://www.todobackend.com/client/index.html) to work with the API. As before pick one of the `endpoints` listed before and try the client.
+**✅ Step 1c. Test TodoBackEnd Web Client** : todoBackend.com provides a [client](https://www.todobackend.com/client/index.html) to work with the API. As before pick one of the `endpoints` listed before and try the client.
 
 ![TodoBackendClient](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/todobackend-runclient.png?raw=true)
 
@@ -91,7 +90,7 @@ Our mission in the next hour is to implement the *backend API* and store data in
 
 ## 2. Create your Spring-Boot Application
 
-**✅ How to create a Skeleton** 
+**✅ Step 2a. How to create an application Skeleton** 
 
 [Start.spring.io](http://start.spring.io) routes you to the Spring Initializr which helps you create projects from scratch.
 
@@ -104,12 +103,18 @@ Now you could simply click the **GENERATE** button to download the ZIP but the r
 
 ## 3. Start your Spring-Boot Application 
 
-**✅ Step 3b. Start Your application** : Make sure you are in the proper folder and use this maven command to start the application.
+**✅ Step 3a. (try to) Start your application** : Make sure you are in the proper folder and use this maven command to start the application.
 
 ```bash
-cd todobackend-springdata/
+cd /workspace/workshop-spring-data-cassandra/todobackend-springdata
 
 mvn clean install spring-boot:run
+```
+
+For those who read the text:
+
+```diff
+- You will get an ERROR, THIS IS EXPECTED
 ```
 
 **👁️ Expected output**
@@ -117,14 +122,13 @@ mvn clean install spring-boot:run
 Caused by: com.datastax.oss.driver.api.core.AllNodesFailedException: Could not reach any contact point, make sure you've provided valid addresses (showing first 1 nodes, use getAllErrors() for more): Node(endPoint=/127.0.0.1:9042, hostId=null, hashCode=17e0c2f0): [com.datastax.oss.driver.api.core.connection.ConnectionInitException: [s0|control|connecting...] Protocol initialization request, step 1 (OPTIONS): failed to send request (io.netty.channel.StacklessClosedChannelException)]
 ```
 
-For those who read the text:
-```diff
-- You will get an ERROR, THIS IS EXPECTED
-```
+**✅ Step 3b. Fix your application**
 
-With dependencies introduced by Spring Data Cassandra, Spring Boot now wants to create beans to connect to Cassandra but, as of now we don't have any backend. We will fix it soon but for now let's add a couple of lines in the main class.  In order to remove  autoconfigurations>  we use proper exclude clauses in the annotation `SpringBootApplication` in class `TodobackendSpringdataApplication`.
+With dependencies introduced by Spring Data Cassandra, Spring Boot wants to create beans to connect to Cassandra but, as of now we don't have any backend. We will fix it soon but for now let's add a couple of lines in the main class.  In order to remove  **autoconfigurations**  we use exclude clauses in the annotation `SpringBootApplication` for class `TodobackendSpringdataApplication`.
 
-Edit the `SpringBootApplication` annotation and add the following **exclude** statements. 
+Edit `SpringBootApplication` annotation in class `TodobackendSpringdataApplication`:
+
+- Add the following **exclude** statements. 
 
 ```java
 import org.springframework.boot.autoconfigure.cassandra.CassandraAutoConfiguration;
@@ -174,6 +178,9 @@ mvn clean install spring-boot:run
 ```
 
 ![TodoBackendClient](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/PART1/images/gitpod-empty.png?raw=true)
+
+
+**✅ Step 3c. Create your hello world endpoint**
 
 Pretty sad to have an error page when we do not have any controller, let's create one `HelloWorldRestController` in a new package `hello`:
 
