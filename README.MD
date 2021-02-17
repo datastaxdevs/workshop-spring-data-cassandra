@@ -177,7 +177,7 @@ mvn clean install spring-boot:run
 2020-12-13 17:32:12.020  INFO 6029 --- [  restartedMain] c.d.w.TodobackendSpringdataApplication   : Started TodobackendSpringdataApplication in 1.862 seconds (JVM running for 2.264)
 ```
 
-If the preview is not automatically refresh open the application with the following command:
+If the preview window does not automatically refresh, open a new terminal (`Terminal > New Terminal` in menu) and use the following command:
 
 ```
 gp preview $(gp url 8080)
