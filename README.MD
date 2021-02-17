@@ -10,6 +10,21 @@ Today we will develop the famous TodoApplication backend with a storage in **Apa
 
 ![SplashScreen](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/splash.jpeg?raw=true)
 
+```
+ℹ️ Information
+-----------------
+
+💻 There is nothing preventing you from running the workshop on your own laptop. 
+ 
+If you do so, you will need 
+- Maven
+- A JavaIDE like VSCode, IntelliJ, Eclipse or Spring STS
+- Curl.
+ 
+You will have to adapt commands and paths based on your environment and 
+install the dependencies by yourself. We won't provide support during the live to
+keep the schedule.
+```
 
 ## 1. Launch Gitpod
 
@@ -42,11 +57,6 @@ gp url 8080
 **👁️ Expected output**
 
 ![TodoBackendClient](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/gitpod-url.png?raw=true)
-
-
-### Working on your laptop
-> 💻 There is nothing preventing you from running the workshop on your own laptop. If you do so you will need Maven, an IDE like Spring STS, and curl. You will have to adapt the commands and the path based on your environment and install the dependencies yourself.
-
 
 🚀 **Let's get starting**
 
