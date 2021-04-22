@@ -94,7 +94,7 @@ gitpod /workspace/workshop-spring-data-cassandra $ ls -l /tmp/creds.zip
 Unit Tests are located in `src/test/java`. 
 Open the file `Ex1_ConnectivityToAstraExplicitTest` 
 
-Open file `src/main/resources/application.properties` and edit the keys with values of your DB, if you used the values provided you don't have to change anything.
+Open file `src/main/resources/application.properties` and edit the keys with values of your DB. You need too change username and password but the keyspace name should be fine.
 
 ```properties
 spring.data.cassandra.keyspace-name=todokeyspace
