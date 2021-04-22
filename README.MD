@@ -9,45 +9,36 @@
 
 ## 1. Create your Astra instance
 
-`ASTRA` service is available at url [https://astra.datastax.com](https://dtsx.io/workshop). `ASTRA` is the simplest way to run Cassandra with zero operations. Just push the button and get your cluster. `Astra` offers **5 Gb Tier Free Forever** and you **don't need a credit card** or anything to sign-up and use it. 
+**`ASTRA`** is the simplest way to run Cassandra with zero operations at all - just push the button and get your cluster. No credit card required, $25.00 USD credit every month, roughly 5M writes, 30M reads, 40GB storage monthly - sufficient to run small production workloads.  
 
-**✅ Step 1a. Register (if needed) and Sign In to Astra** 
+✅ Register (if needed) and Sign In to Astra [https://astra.datastax.com](https://dtsx.io/workshop): You can use your `Github`, `Google` accounts or register with an `email`.
 
-You can use your `Github` or `Google` account or if you would rather you can register directly with an `email`.
+_Make sure to chose a password with minimum 8 characters, containing upper and lowercase letters, at least one number and special character_
 
-Make sure to chose a password with minimum 8 characters, containing an upper and lowercase letter, and at least one number and special character
+✅ Create a "pay as you go" plan
 
-[Authentication Page](https://dtsx.io/workshop)
+Follow this [guide](https://docs.datastax.com/en/astra/docs/creating-your-astra-database.html), to set up a pay as you go database with a free $25 monthly credit.
 
-![Login Image](https://github.com/datastaxdevs/shared-assets/blob/master/astra/signin-raw.png?raw=true)
+- **Select the pay as you go option**: Includes $25 monthly credit - no credit card needed to set up.
 
-**✅ Step 1b. Choose the free plan and select your region**
+You will find below which values to enter for each field.
 
-![my-pic](https://github.com/DataStax-Academy/battlestax/blob/master/tutorial/creatastra-1.png?raw=true)
+- **For the database name** - `myfreetierdb.` While Astra allows you to fill in these fields with values of your own choosing, please follow our recommendations to ensure the application runs properly.
 
-- **Select the free tier**: 5GB storage, no obligation
+- **For the keyspace name** - `todokeyspace`. It's really important that you use the name "free" for the code to work.
 
-- **Select the region**: This is the region where your database will reside physically (choose one close to you or your users). For people in EMEA please use `europe-west1` the idea here is to reduce latency.
+_You can technically use whatever you want and update the code to reflect the keyspace. This is really to get you on a happy path for the first run._
 
-**✅ Step 1c. Configure and create your database**
+- **For provider and region**: Choose and provider (either GCP or AWS). Region is where your database will reside physically (choose one close to you or your users).
 
-Below you will find the values to enter for each field.
+- **Create the database**. Review all the fields to make sure they are as shown, and click the `Create Database` button.
 
-![.](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/raw/PART3/images/create-astra-2.png?raw=true)
+You will see your new database `pending` in the Dashboard.
 
-- **Fill in the database name** - `myfreetierdb` While Astra allows you to fill in these fields with values of your own choosing, please follow our reccomendations to make the rest of the exercises easier to follow. If you don't, you are on your own! :)
-
-- **Fill in the keyspace name** - `todokeyspace`. It's really important that you use the name battlestax here in order for all the exercises to work well. We realize you want to be creative, but please just roll with this one today.
-
-- **Fill in the Database User name** - `todouser`. Note the user name is case-sensitive. Please use the case we suggest here.
-
-- **Fill in the password** - `todo_password1`. Fill in both the password and the confirmation fields. Note that the password is also case-sensitive. Please use the case we suggest here.
-
-- **Create the database**. Review all the fields to make sure they are the same as shown, and click the **`Create Database`** button.<br/><br/>You will see your new database `Pending` in the Dashboard.
-
-![my-pic](https://github.com/DataStax-Academy/battlestax/blob/master/tutorial/creatastra-3.png?raw=true)
+![my-pic](https://github.com/datastaxdevs/shared-assets/blob/master/astra/dashboard-pending-1000-update.png?raw=true)
 
 The status will change to `Active` when the database is ready, this will only take 2-3 minutes. You will also receive an email when it is ready.
+
 
 ## 2. Connectivity to Cassandra
 
