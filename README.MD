@@ -31,7 +31,7 @@ You will find below which values to enter for each field.
 
 _You can technically use whatever you want and update the code to reflect the keyspace. This is really to get you on a happy path for the first run._
 
-- **For provider and region**: Choose and provider (either GCP or AWS). Region is where your database will reside physically (choose one close to you or your users).
+- **For provider and region**: Choose and provider (GCP, AWS or Azure as you like). Region is where your database will reside physically (choose one close to you or your users).
 
 - **Create the database**. Review all the fields to make sure they are as shown, and click the `Create Database` button.
 
@@ -54,19 +54,19 @@ Once you **DOWNLOAD** the token if you view the contents they should look someth
 "fdsfdslKFdLFdslDFFDjf","aaaaaaadsdadasdasdasdfsadfldsjfldjdsaldjasljdasljdsaljdasljdasljdlasjdal-FLflirFdfl.lfjdfdsljfjdl+fdlffkdsslfd","AstraCS:ppppdspfdsdslfjsdlfjdlj:540524888-04384039399999999999999999","Admin User"
 ```
 
-You'll need to use this in a moment clientId is your username and clientSecret your passwoord **keep it handy**.
-a
-With our `Cassandra-as-a-service` instance ready let's connect from our application.
+You'll need to use this in a moment `clientId` as your username and `clientSecret` as your passwoord **keep it handy**.
 
 **✅ Step 2b. Get the secure connect bundle**
 
-Go to the Astra home, select your database name on the right and find the `connect` tab
-
-Once on the **Connect** screen pick `Java` on the left pannel and locate the `Secure Connect Bundle` link. 
+From Astra home:
+- Select your database name on the left panel named Databases
+- Find the `connect` tab
+- Pick `Java` on the left pannel 
+- Locate the `Secure Connect Bundle` link
 
 ![TodoBackend](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/PART3/images/download-secure.png?raw=true)
 
-Open the button with the arrow, then copy the link with a right click
+Open the button with arrow, then copy the link with a right click
 
 ![TodoBackend](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/PART3/images/copy-link.png?raw=true)
 
@@ -98,7 +98,7 @@ Open file `src/main/resources/application.properties` and edit the keys with val
 
 ```properties
 spring.data.cassandra.keyspace-name=todokeyspace
-spring.data.cassandra.username=<clientID>
+spring.data.cassandra.username=<clientId>
 spring.data.cassandra.password=<clientSecret>
 ```
 
