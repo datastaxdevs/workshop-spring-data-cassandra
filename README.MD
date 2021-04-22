@@ -11,11 +11,13 @@
 
 **`ASTRA`** is the simplest way to run Cassandra with zero operations at all - just push the button and get your cluster. No credit card required, $25.00 USD credit every month, roughly 5M writes, 30M reads, 40GB storage monthly - sufficient to run small production workloads.  
 
-✅ Register (if needed) and Sign In to Astra [https://astra.datastax.com](https://dtsx.io/workshop): You can use your `Github`, `Google` accounts or register with an `email`.
+**✅ Step 1a: Register (if needed) and Sign In to Astra**
+
+ [https://astra.datastax.com](https://dtsx.io/workshop): You can use your `Github`, `Google` accounts or register with an `email`.
 
 _Make sure to chose a password with minimum 8 characters, containing upper and lowercase letters, at least one number and special character_
 
-✅ Create a "pay as you go" plan
+**✅ Step 1b:Create a "pay as you go" plan**
 
 Follow this [guide](https://docs.datastax.com/en/astra/docs/creating-your-astra-database.html), to set up a pay as you go database with a free $25 monthly credit.
 
@@ -39,18 +41,33 @@ You will see your new database `pending` in the Dashboard.
 
 The status will change to `Active` when the database is ready, this will only take 2-3 minutes. You will also receive an email when it is ready.
 
-
 ## 2. Connectivity to Cassandra
 
+**✅ 2a. Generate your application token**
+
+If you don't already have one follow the instructions [**HERE**](https://docs.datastax.com/en/astra/docs/manage-application-tokens.html#_create_application_token) to generate your new token. **Don't forget to download it once created because you will not be able to see it again** without generating a new one.
+
+Once you **DOWNLOAD** the token if you view the contents they should look something like this:
+
+```shell
+"Client Id","Client Secret","Token","Role"
+"fdsfdslKFdLFdslDFFDjf","aaaaaaadsdadasdasdasdfsadfldsjfldjdsaldjasljdasljdsaljdasljdasljdlasjdal-FLflirFdfl.lfjdfdsljfjdl+fdlffkdsslfd","AstraCS:ppppdspfdsdslfjsdlfjdlj:540524888-04384039399999999999999999","Admin User"
+```
+
+You'll need to use this in a moment clientId is your username and clientSecret your passwoord **keep it handy**.
+a
 With our `Cassandra-as-a-service` instance ready let's connect from our application.
 
-**✅ Step 2a. Get the secure connect bundle** : Go to the Astra home page and locate the connect button. as displayed on the picture below.
+**✅ Step 2b. Get the secure connect bundle**
 
-![TodoBackend](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/PART3/images/astra-connect.png?raw=true) 
+Go to the Astra home, select your database name on the right and find the `connect` tab
 
 Once on the **Connect** screen pick `Java` on the left pannel and locate the `Secure Connect Bundle` link. Copy the link with a right click
 
-![TodoBackend](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/PART3/images/astra-securebundle.png?raw=true)
+![TodoBackend](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/PART3/images/download-secure.png?raw=true)
+
+
+![TodoBackend](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/PART3/images/copy-link.png?raw=true)
 
 In gitpod, execute the following command and substitute the link you copied in the previous step. Becareful about the double quotes as they are mandatory. We are downloading the ZIP **outside the repository** this way when we move from one branch to another we don't loose it.
 
