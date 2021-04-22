@@ -62,10 +62,11 @@ With our `Cassandra-as-a-service` instance ready let's connect from our applicat
 
 Go to the Astra home, select your database name on the right and find the `connect` tab
 
-Once on the **Connect** screen pick `Java` on the left pannel and locate the `Secure Connect Bundle` link. Copy the link with a right click
+Once on the **Connect** screen pick `Java` on the left pannel and locate the `Secure Connect Bundle` link. 
 
 ![TodoBackend](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/PART3/images/download-secure.png?raw=true)
 
+Open the button with the arrow, then copy the link with a right click
 
 ![TodoBackend](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/PART3/images/copy-link.png?raw=true)
 
@@ -97,8 +98,8 @@ Open file `src/main/resources/application.properties` and edit the keys with val
 
 ```properties
 spring.data.cassandra.keyspace-name=todokeyspace
-spring.data.cassandra.username=todouser
-spring.data.cassandra.password=todo_password1
+spring.data.cassandra.username=<clientID>
+spring.data.cassandra.password=<clientSecret>
 ```
 
 You can now run the UNIT TEST with your IDE or Maven in a terminal (easier with gitpod 
