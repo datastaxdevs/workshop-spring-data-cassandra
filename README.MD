@@ -1,7 +1,7 @@
 # PART3
 
 **Table of Content**
-- **[1. Create your Astra Instance](#1-create-your-astra-instance)**
+- **[1. Create your Astra DB Instance](#1-create-your-astra-instance)**
 - **[2. Connectivity to Cassandra](#2-connectivity-to-cassandra)**
 - **[3. Connect the application to ASTRA](#3-connect-the-application-to-astra)**
 
@@ -9,7 +9,7 @@
 
 ## 1. Create your Astra instance
 
-**`ASTRA`** is the simplest way to run Cassandra with zero operations at all - just push the button and get your cluster. No credit card required, $25.00 USD credit every month, roughly 5M writes, 30M reads, 40GB storage monthly - sufficient to run small production workloads.  
+**`ASTRA DB `** is the simplest way to run Cassandra with zero operations at all - just push the button and get your cluster. No credit card required, $25.00 USD credit every month, roughly 5M writes, 30M reads, 40GB storage monthly - sufficient to run small production workloads.  
 
 **✅ Step 1a: Register (if needed) and Sign In to Astra**
 
@@ -25,7 +25,7 @@ Follow this [guide](https://docs.datastax.com/en/astra/docs/creating-your-astra-
 
 You will find below which values to enter for each field.
 
-- **For the database name** - `myfreetierdb.` While Astra allows you to fill in these fields with values of your own choosing, please follow our recommendations to ensure the application runs properly.
+- **For the database name** - `myfreetierdb.` While Astra DB allows you to fill in these fields with values of your own choosing, please follow our recommendations to ensure the application runs properly.
 
 - **For the keyspace name** - `todokeyspace`. It's really important that you use the name "free" for the code to work.
 
@@ -58,7 +58,7 @@ You'll need to use this in a moment `clientId` as your username and `clientSecre
 
 **✅ Step 2b. Get the secure connect bundle**
 
-From Astra home:
+From Astra DB home:
 - Select your database name on the left panel named Databases
 - Find the `connect` tab
 - Pick `Java` on the left pannel 
