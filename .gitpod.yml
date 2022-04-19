@@ -3,11 +3,12 @@ image:
 
 tasks:
   - name: spring-data-cassandra
-    init: |
+    command: |
       cd todobackend-springdata && mvn clean package install -Dmaven.test.skip=true
 ports:
   - port: 8080
     onOpen: open-browser 
+    visibility: public
 
 github:
   prebuilds:
@@ -22,6 +23,9 @@ github:
 
 vscode:
   extensions:
-    #- Pivotal.vscode-spring-boot@1.22.0:NtlGb5ygHm2uP5qeqfVrCA==
-    #- cool2k.vscode-lombok@1.0.2:e816/wZO588Jp8PN58Wj6g==
-    #- Pivotal.vscode-boot-dev-pack@0.0.8:KGahbNlLCY19QUebUzdLbA==
+    # Lombok
+    - GabrielBB.vscode-lombok
+    # Java
+    - vscjava.vscode-java-pack
+    # Spring Boot
+    - Pivotal.vscode-boot-dev-pack
