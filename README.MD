@@ -56,6 +56,12 @@ Once you **DOWNLOAD** the token if you view the contents they should look someth
 
 You'll need to use this in a moment `clientId` as your username and `clientSecret` as your passwoord **keep it handy**.
 
+> **⚠️ Important**
+> ```
+> The instructor will show you on screen how to create a token 
+> but will have to destroy to token immediately for security reasons.
+> ```
+
 **✅ Step 2b. Get the secure connect bundle**
 
 From Astra DB home:
