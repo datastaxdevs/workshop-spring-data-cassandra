@@ -28,7 +28,7 @@ keep the schedule.
 
 ## 1. Launch Gitpod
 
-[Gitpod](https://www.gitpod.io/) is an IDE 100% online based on Eclipse Theia. To initialize your environment simply click on the button below *(CTRL + Click to open in new tab)* You will be asked for you github account.
+[Gitpod](https://www.gitpod.io/) is an IDE 100% online based on VSCode. To initialize your environment simply click on the button below *(CTRL + Click to open in new tab)* You will be asked for you github account.
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/DataStax-Academy/workshop-spring-data-cassandra)
 
