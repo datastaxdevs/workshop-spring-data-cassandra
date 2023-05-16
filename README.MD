@@ -38,7 +38,7 @@ keep the schedule.
 
 ![TodoBackendClient](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/gitpod-home.png?raw=true)
 
-You can be asked to import the project, please accept to have java features enabled for you project.
+You may be asked to import the project, please accept to have Java features enabled for you project.
 
 ![TodoBackendClient](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/import.png?raw=true)
 
