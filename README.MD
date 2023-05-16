@@ -23,17 +23,17 @@ For simplicity all exercise instructions are listed in a single `README.MD` docu
 
 ![TodoBackend](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/todobackend.png?raw=true)
 
-There are multiple free implementations available. In this workshop we will use: [https://dm-tdb-02.azurewebsites.net/todo](https://dm-tdb-02.azurewebsites.net/todo)
+There are multiple free implementations available. In this workshop we will use: [https://todo-backend-webapi.azurewebsites.net/todo](https://todo-backend-webapi.azurewebsites.net/todo)
 
 **✅ Step 1b. Test TodoBackEnd Spec Runner** : Use the [spec runner](https://www.todobackend.com/specs/index.html) with the `endpoint` listed above to evaluate if API matches the requirements. To do so copy-paste one URL and click `Run Tests`.
 
 ![TodoBackendTest](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/todobackend-runtest.png?raw=true)
 
 - Link to [`SpecRunner`](https://www.todobackend.com/specs/index.html?https://dm-tdb-02.azurewebsites.net/todo)
-https://todobackend.com/specs/index.html?https://dm-tdb-02.azurewebsites.net/todo
+https://todobackend.com/specs/index.html?https://todo-backend-webapi.azurewebsites.net/todo
 
 ```
-gp preview https://todobackend.com/specs/index.html?https://dm-tdb-02.azurewebsites.net/todo
+gp preview https://todobackend.com/specs/index.html?https://todo-backend-webapi.azurewebsites.net/todo
 ```
 
 **👁️ Expected output**
