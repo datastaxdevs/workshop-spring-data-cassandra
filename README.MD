@@ -12,18 +12,18 @@
 ✅ **Step 1a:** Open the preview with an existing API 
 
 ```
-gp preview https://todo-back-springboot220-java12.herokuapp.com/todos
+gp preview https://csharp-todo-backend.azurewebsites.net/api/v1/todo
 ```
 
 When checking the specification the ouput json should look like:
 
 ```json
 {
-  "url": "http://localhost:8080/api/v1/todos/415fa735-d432-4dda-8558-db6cfddea03a",
-  "uuid": "415fa735-d432-4dda-8558-db6cfddea03a",
-  "title": "blah",
-  "completed": false,
-  "order": 95
+  "id":"8bcf5458-a52f-4b43-96fd-dfdcbcd0e1e8",
+  "completed":false,
+  "order":95,
+  "title":"blah",
+  "url":"https://csharp-todo-backend.azurewebsites.net/api/v1/todo/8bcf5458-a52f-4b43-96fd-dfdcbcd0e1e8"
 }
 ```
 
@@ -37,7 +37,7 @@ import lombok.Data;
 @Data
 public class Todo {
     private String  url;
-    private UUID    uuid;
+    private UUID    id;
     private String  title;
     private boolean completed = false;
     private int     order = 0;
