@@ -42,7 +42,7 @@ gp preview https://todobackend.com/specs/index.html?https://todo-backend-webapi.
 
 **Note:** *During the live stream there will be dozens of people testing the same endpoints.  It is possible that we could hit some slowness or issues with race conditions.*
 
-**✅ Step 1c. Test TodoBackEnd Web Client** : todoBackend.com provides a [client](https://www.todobackend.com/client/index.html) to work with the API. As before pick  the `endpoints` we used before and try the client.
+**✅ Step 1c. Test TodoBackEnd Web Client** : todoBackend.com provides a [client](https://www.todobackend.com/client/index.html) to work with the API. As before pick  the `endpoint` we used before and try the client.
 
 ![TodoBackendClient](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/todobackend-runclient.png?raw=true)
 
