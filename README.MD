@@ -60,7 +60,7 @@ Our mission in the next hour is to implement the *backend API* and store data in
 
 [Start.spring.io](http://start.spring.io) routes you to the Spring Initializr which helps you create projects from scratch.
 
-Fill the different fields as shown in the picture below. As we are lazy, click [THIS LINK](https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.4.1.RELEASE&packaging=jar&jvmVersion=11&groupId=com.datastax.workshop&artifactId=todobackend-springdata&name=todobackend-springdata&description=TodoBackend%20Spring%20Boot%20Microservices%20with%20Spring%20Data%20for%20Apache%20Cassandra&packageName=com.datastax.workshop&dependencies=data-cassandra,devtools,web,lombok,actuator)
+Fill the different fields as shown in the picture below. As we are lazy, click [THIS LINK](https://start.spring.io/#!type=maven-project&language=java&platformVersion=3.0.6&packaging=jar&jvmVersion=11&groupId=com.datastax.workshop&artifactId=todobackend-springdata&name=todobackend-springdata&description=TodoBackend%20Spring%20Boot%20Microservices%20with%20Spring%20Data%20for%20Apache%20Cassandra&packageName=com.datastax.workshop&dependencies=data-cassandra,devtools,web,lombok,actuator)
  to have everything populated already.
 
 ![TodoBackendClient](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/spring-initializr.png?raw=true)
