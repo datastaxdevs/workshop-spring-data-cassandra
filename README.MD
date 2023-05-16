@@ -42,29 +42,11 @@ gp preview https://todobackend.com/specs/index.html?https://todo-backend-webapi.
 
 **Note:** *During the live stream there will be dozens of people testing the same endpoints.  It is possible that we could hit some slowness or issues with race conditions.*
 
-**✅ Step 1c. Test TodoBackEnd Web Client** : todoBackend.com provides a [client](https://www.todobackend.com/client/index.html) to work with the API. As before pick one of the `endpoints` listed before and try the client.
+**✅ Step 1c. Test TodoBackEnd Web Client** : todoBackend.com provides a [client](https://www.todobackend.com/client/index.html) to work with the API. As before pick  the `endpoints` we used before and try the client.
 
 ![TodoBackendClient](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/todobackend-runclient.png?raw=true)
 
-** Pick on of the 3:**
-
-- Link to [`WebClient#1`](https://www.todobackend.com/client/index.html?https://todo-back-springboot220-java12.herokuapp.com/todos)
-
-```
-gp preview https://www.todobackend.com/client/index.html?https://todo-back-springboot220-java12.herokuapp.com/todos
-```
-
-- Link to [`WebClient#2`](https://www.todobackend.com/client/index.html?https://todo-quarkus.herokuapp.com/todos)
-
-```
-gp preview https://www.todobackend.com/client/index.html?https://todo-quarkus.herokuapp.com/todos
-```
-
-- Link to [`WebClient#3`](https://www.todobackend.com/client/index.html?https://todo-backend-micronaut.herokuapp.com/todos)
-
-```
-gp preview https://www.todobackend.com/client/index.html?https://todo-backend-micronaut.herokuapp.com/todos
-```
+- Link to [`WebClient`](https://www.todobackend.com/client/index.html?https://dm-tdb-02.azurewebsites.net/todo)
 
 **👁️ Expected output**
 
