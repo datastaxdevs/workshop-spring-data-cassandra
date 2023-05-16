@@ -23,17 +23,17 @@ For simplicity all exercise instructions are listed in a single `README.MD` docu
 
 ![TodoBackend](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/todobackend.png?raw=true)
 
-There are multiple free implementations available. In this workshop we will use: [https://todo-backend-webapi.azurewebsites.net/todo](https://todo-backend-webapi.azurewebsites.net/todo)
+There are multiple free implementations available. In this workshop we will use: [https://csharp-todo-backend.azurewebsites.net/api/v1/todo](https://csharp-todo-backend.azurewebsites.net/api/v1/todo)
 
 **✅ Step 1b. Test TodoBackEnd Spec Runner** : Use the [spec runner](https://www.todobackend.com/specs/index.html) with the `endpoint` listed above to evaluate if API matches the requirements. To do so copy-paste one URL and click `Run Tests`.
 
 ![TodoBackendTest](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/todobackend-runtest.png?raw=true)
 
 - Link to [`SpecRunner`](https://www.todobackend.com/specs/index.html?https://dm-tdb-02.azurewebsites.net/todo)
-https://todobackend.com/specs/index.html?https://todo-backend-webapi.azurewebsites.net/todo
+https://todobackend.com/specs/index.html?https://csharp-todo-backend.azurewebsites.net/api/v1/todo
 
 ```
-gp preview https://todobackend.com/specs/index.html?https://todo-backend-webapi.azurewebsites.net/todo
+gp preview https://todobackend.com/specs/index.html?https://csharp-todo-backend.azurewebsites.net/api/v1/todo
 ```
 
 **👁️ Expected output**
@@ -46,7 +46,7 @@ gp preview https://todobackend.com/specs/index.html?https://todo-backend-webapi.
 
 ![TodoBackendClient](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/todobackend-runclient.png?raw=true)
 
-- Link to [`WebClient`](https://www.todobackend.com/client/index.html?https://dm-tdb-02.azurewebsites.net/todo)
+- Link to [`WebClient`](https://www.todobackend.com/client/index.html?https://csharp-todo-backend.azurewebsites.net/api/v1/todo)
 
 **👁️ Expected output**
 
