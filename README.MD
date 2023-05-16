@@ -23,10 +23,7 @@ For simplicity all exercise instructions are listed in a single `README.MD` docu
 
 ![TodoBackend](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/todobackend.png?raw=true)
 
-There are multiple free implementations available. Some implementations provide endpoints to be tested in `heroku`. [Heroku provide free hosting for a Java application but this is on-demand](https://devcenter.heroku.com/articles/deploying-spring-boot-apps-to-heroku). With `Heroku` The application will be incative until you access the endpoint. Due to this it will take 30s for the first person hitting the endpoint to wake up the application. Among the available free endpoints we can list:
-- `#1` : [https://todo-back-springboot220-java12.herokuapp.com/todos](https://todo-back-springboot220-java12.herokuapp.com/todo)
-- `#2` : [https://todo-quarkus.herokuapp.com/todos](https://todo-quarkus.herokuapp.com/todos)
-- `#3` : [https://todo-backend-micronaut.herokuapp.com/todos](https://todo-backend-micronaut.herokuapp.com/todos)
+There are multiple free implementations available. In this workshop we will use: [https://dm-tdb-02.azurewebsites.net/todo](https://dm-tdb-02.azurewebsites.net/todo)
 
 **✅ Step 1b. Test TodoBackEnd Spec Runner** : Locate the [spec runner](https://www.todobackend.com/specs/index.html) and use one of the `endpoints` listed above to evaluate if API matchs the requirements. To do so copy-paste one URL and click `Run Tests`.
 
