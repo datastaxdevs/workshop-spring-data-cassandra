@@ -281,7 +281,7 @@ mvn spring-boot:run
 
 Open the preview with, your app is now connected to Cassandra
 ```
-gp preview $(gp url 8080)/
+gp preview $(gp url 8080)/api/v1/todos/
 ```
 
 --- 
