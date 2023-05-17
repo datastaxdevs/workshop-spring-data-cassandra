@@ -23,3 +23,5 @@ github:
 vscode:
   extensions:
     - Pivotal.vscode-spring-boot@1.22.0:NtlGb5ygHm2uP5qeqfVrCA==
+    - gabrielbb.vscode-lombok
+
