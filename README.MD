@@ -10,6 +10,21 @@ Today we will develop the famous TodoApplication backend with a storage in **Apa
 
 ![SplashScreen](https://github.com/DataStax-Academy/workshop-spring-data-cassandra/blob/main/images/splash.jpeg?raw=true)
 
+
+
+#### 🌏  Open in the Cloud 
+
+Click any of the buttons below to start a new development environment to demo or contribute to the codebase without having to install anything on your machine:
+
+[![Open in VS Code](https://img.shields.io/badge/Open%20in-VS%20Code-blue?logo=visualstudiocode)](https://vscode.dev/github/datastax-academy/workshop-spring-data-cassandra)
+[![Open in Glitch](https://img.shields.io/badge/Open%20in-Glitch-blue?logo=glitch)](https://glitch.com/edit/#!/import/github/datastax-academy/workshop-spring-data-cassandra)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/datastax-academy/workshop-spring-data-cassandra)
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/datastax-academy/workshop-spring-data-cassandra)
+[![Edit in Codesandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/datastax-academy/workshop-spring-data-cassandra)
+[![Open in Repl.it](https://replit.com/badge/github/withastro/astro)](https://replit.com/github/datastax-academy/workshop-spring-data-cassandra)
+[![Open in Codeanywhere](https://codeanywhere.com/img/open-in-codeanywhere-btn.svg)](https://app.codeanywhere.com/#https://github.com/datastax-academy/workshop-spring-data-cassandra)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/datastax-academy/workshop-spring-data-cassandra)
+
 ```
 ℹ️ Information
 -----------------
